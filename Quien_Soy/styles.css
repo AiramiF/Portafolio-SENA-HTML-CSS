@@ -1,0 +1,140 @@
+body{
+margin:0;
+font-family: Arial;
+overflow-x: hidden;
+}
+
+.menu{
+background:#2f3640;
+color:white;
+padding:20px;
+overflow:hidden;
+}
+
+.logo{
+float:left;
+margin:0;
+margin-left:30px;
+}
+
+.navegacion{
+float:right;
+margin:0;
+margin-right:40px;
+}
+
+.navegacion li{
+display:inline;
+margin-left:20px;
+font-size:16px;
+cursor:pointer;
+}
+
+
+.principal{
+background:#eeeeee;
+padding:60px;
+overflow:hidden;
+}
+
+.imagen{
+float:left;
+width:40%;
+}
+
+.imagen img{
+width:100%;
+}
+
+.texto{
+float:right;
+width:50%;
+}
+
+.texto h1{
+color:#F21382;
+font-size:50px;
+}
+
+.texto button{
+background:#F21382;
+color:white;
+border:none;
+padding:10px 20px;
+}
+
+.sobre-mi{
+background:#F21382;
+color:white;
+text-align:center;
+padding:80px;
+}
+
+.foto{
+width:180px;
+border-radius:50%;
+}
+
+.proyectos{
+text-align:center;
+padding:60px;
+background:#f2f2f2;
+}
+
+.tarjeta img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.contenedor-proyectos{
+width:90%;
+margin:auto;
+overflow:hidden;
+}
+
+.tarjeta{
+width:23%;
+float:left;
+margin:1%;
+background:white;
+border:1px solid #ccc;
+padding:15px;
+text-align:center;
+box-sizing:border-box;
+}
+
+.tarjeta img{
+width:100%;
+}
+
+.tarjeta h3{
+margin-top:10px;
+}
+
+.tarjeta p{
+font-size:14px;
+}
+
+.tarjeta button{
+background:#F21382;
+color:white;
+border:none;
+padding:10px 15px;
+margin-top:10px;
+}
+
+.navegacion a{
+color:white;
+text-decoration:none;
+}
+
+.footer{
+background:#2f3640;
+color:white;
+text-align:right;
+padding:20px;
+margin-top:40px;
+width:100%;
+box-sizing:border-box;
+}
