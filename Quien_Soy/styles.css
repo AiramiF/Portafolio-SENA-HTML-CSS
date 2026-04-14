@@ -1,0 +1,153 @@
+body{
+margin:0;
+font-family: Arial;
+overflow-x: hidden;
+}
+
+.menu{
+background:#2f3640;
+color:white;
+padding:20px;
+overflow:hidden;
+}
+
+.logo{
+float:left;
+margin:0;
+margin-left:30px;
+}
+
+.navegacion{
+float:right;
+margin:0;
+margin-right:40px;
+}
+
+.navegacion li{
+display:inline;
+margin-left:20px;
+font-size:16px;
+cursor:pointer;
+}
+
+.principal{
+    background:#fffcfc;
+    padding:60px 80px;
+    overflow:hidden;
+}
+
+.imagen{
+    width:45%;
+    float:left;
+}
+
+.imagen img{
+    width:100%;
+    
+}
+
+.texto{
+    width:40%;
+    float:left;
+    margin-left:5%;
+    margin-top:40px; 
+}
+
+.texto h1{
+    color:#F54927;
+    font-size:50px;
+    margin:0 0 20px 0;
+}
+
+.texto p{
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+.texto button{
+    background:#F54927;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:7px;
+    font-size:20px;
+}
+
+.sobre-mi{
+background:#F54927;
+color:white;
+text-align:center;
+padding:80px;
+font-size: 26px;
+}
+
+.foto{
+width:220px;
+border-radius:50%;
+}
+
+.proyectos{
+    text-align:center;
+    padding:20px 0; 
+    background:#fffdfd;
+}
+
+.proyectos h1{
+    color:#6B6969;
+    margin:10px 0; 
+    font-size:40px; 
+}
+
+.tarjeta img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.contenedor-proyectos{
+width:90%;
+margin:auto;
+overflow:hidden;
+}
+
+.tarjeta{
+width:23%;
+float:left;
+margin:1%;
+background:white;
+border:1px solid #ccc;
+padding:15px;
+text-align:center;
+box-sizing:border-box;
+height:420px; 
+}
+
+.tarjeta p{
+    font-size:14px;
+    color:#6B6969;
+}
+
+.tarjeta button{
+    background:#F54927;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    margin-top:10px;
+    position:relative;
+    top:10px;
+}
+
+.navegacion a{
+color:white;
+text-decoration:none;
+}
+
+.footer{
+background:#2f3640;
+color:white;
+text-align:right;
+padding:20px;
+margin-top:40px;
+width:100%;
+box-sizing:border-box;
+}
