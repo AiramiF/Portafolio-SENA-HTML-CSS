@@ -45,8 +45,9 @@ overflow:hidden;
 }
 
 .imagen{
-width:40%;
+width:41%;
 float:left;
+margin: 0 20px;
 }
 
 .imagen img{
@@ -54,9 +55,9 @@ width:100%;
 }
 
 .texto{
-width:54%;
-float:left;
-margin-left:5%;
+width:48%;
+float:right;
+margin-left:7%;
 margin-top:70px; 
 }
 
@@ -167,7 +168,7 @@ color:white;
 text-align:right;
 padding:20px;
 padding-right: 90px;
-margin-top:40px;
+margin-top:10px;
 width:100%;
 box-sizing:border-box;
 }
