@@ -1,8 +1,9 @@
 body{
 margin:0;
 font-family: Arial;
-overflow-x: hidden;
+overflow-x: hidden; 
 }
+
 
 .menu{
 background:#2f3640;
@@ -31,54 +32,60 @@ cursor:pointer;
 list-style: none;
 }
 
+.navegacion a{
+color:white;
+text-decoration:none;
+}
+
+
 .principal{
-    background:#fffcfc;
-    padding:60px 80px;
-    overflow:hidden;
+background:#fffcfc;
+padding:20px 120px;
+overflow:hidden;
 }
 
 .imagen{
-    width:45%;
-    float:left;
+width:40%;
+float:left;
 }
 
 .imagen img{
-    width:100%;
-    
+width:100%;
 }
 
 .texto{
-    width:40%;
-    float:left;
-    margin-left:5%;
-    margin-top:40px; 
+width:54%;
+float:left;
+margin-left:5%;
+margin-top:70px; 
 }
 
 .texto h1{
-    color:#F54927;
-    font-size:50px;
-    margin:0 0 20px 0;
+color:#F54927;
+font-size:50px;
+margin:0 0 20px 0;
 }
 
 .texto p{
-    margin-bottom:20px;
-    line-height:1.5;
+margin-bottom:20px;
+line-height:1.5;
 }
 
 .texto button{
-    background:#F54927;
-    color:white;
-    border:none;
-    padding:10px 20px;
-    border-radius:7px;
-    font-size:20px;
+background:#F54927;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:7px;
+font-size:20px;
 }
+
 
 .sobre-mi{
 background:#F54927;
 color:white;
 text-align:center;
-padding:80px;
+padding:20px 80px;
 font-size: 26px;
 }
 
@@ -87,22 +94,17 @@ width:220px;
 border-radius:50%;
 }
 
+
 .proyectos{
-    text-align:center;
-    padding:20px 0; 
-    background:#fffdfd;
+text-align:center;
+padding:20px 0; 
+background:#fffdfd;
 }
 
 .proyectos h1{
-    color:#6B6969;
-    margin:10px 0; 
-    font-size:40px; 
-}
-
-.tarjeta img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
+color:#6B6969;
+margin:10px 0; 
+font-size:40px; 
 }
 
 .contenedor-proyectos{
@@ -111,36 +113,52 @@ margin:auto;
 overflow:hidden;
 }
 
+
 .tarjeta{
 width:23%;
 float:left;
 margin:1%;
 background:white;
 border:1px solid #ccc;
-padding:15px;
 text-align:center;
 box-sizing:border-box;
-height:420px; 
+height:430px; 
+position: relative;
+padding-bottom:60px; 
+border-radius: 6px;
 }
+
+
+.img-card{
+width:100%;
+height:180px;
+overflow:hidden;
+}
+
+
+.img-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
 
 .tarjeta p{
-    font-size:14px;
-    color:#6B6969;
+font-size:14px;
+color:#6B6969;
+padding:0 10px;
 }
+
 
 .tarjeta button{
-    background:#F54927;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    margin-top:10px;
-    position:relative;
-    top:10px;
-}
-
-.navegacion a{
+background:#F54927;
 color:white;
-text-decoration:none;
+border:none;
+padding:10px 15px;
+position:absolute;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
 }
 
 .footer{
@@ -148,6 +166,7 @@ background:#2f3640;
 color:white;
 text-align:right;
 padding:20px;
+padding-right: 90px;
 margin-top:40px;
 width:100%;
 box-sizing:border-box;
