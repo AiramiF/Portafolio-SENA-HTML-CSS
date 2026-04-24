@@ -37,17 +37,18 @@ color:white;
 text-decoration:none;
 }
 
-
 .principal{
 background:#fffcfc;
 padding:20px 120px;
 overflow:hidden;
+line-height:1.5;
 }
 
 .imagen{
-width:41%;
+width:40%;
 float:left;
-margin: 0 20px;
+margin:0;
+padding-top:60px;
 }
 
 .imagen img{
@@ -55,10 +56,10 @@ width:100%;
 }
 
 .texto{
-width:48%;
+width:55%;
 float:right;
-margin-left:7%;
-margin-top:70px; 
+margin:0;
+padding-top:40px; 
 }
 
 .texto h1{
@@ -80,7 +81,6 @@ padding:10px 20px;
 border-radius:7px;
 font-size:20px;
 }
-
 
 .sobre-mi{
 background:#F54927;
@@ -150,7 +150,6 @@ color:#6B6969;
 padding:0 10px;
 }
 
-
 .tarjeta button{
 background:#F54927;
 color:white;
@@ -171,4 +170,152 @@ padding-right: 90px;
 margin-top:10px;
 width:100%;
 box-sizing:border-box;
+}
+
+@media (max-width: 1245px){
+    .principal{
+padding:10px 45px;
+max-height: 390px;
+}
+.texto h1{
+font-size:24px;
+}
+
+.texto button{
+font-size:16px;
+padding:8px;
+}
+
+}
+
+@media (max-width: 1038px){
+
+    .tarjeta{
+        width:31%;   
+        margin:1%;
+        float:left;
+    }
+
+}
+
+@media (max-width: 800px){
+
+    .tarjeta{
+        width:48%;  
+        margin:1%;
+        float:left;
+    }
+
+}
+
+@media (max-width: 588px){
+
+.logo{
+float:none;
+text-align:center;
+margin:0;
+}
+
+.navegacion{
+float:none;
+text-align:center;
+margin:10px 0 0 0;
+}
+
+.navegacion li{
+float:none;
+display:block;
+margin:10px 0;
+}
+
+
+.principal{
+padding:20px 0px;
+}
+
+.imagen,
+.texto{
+float:none;
+width:100%;
+margin:0;
+padding-top:20px;
+text-align:center;
+}
+
+.texto h1{
+font-size:32px;
+}
+
+ .tarjeta{
+        width:45%;  
+        margin:1%;
+        float:left;
+    }
+
+    .contenedor-proyectos{
+        width:100%;
+        padding:0 5px;
+        box-sizing:border-box;
+    }
+
+.principal{
+padding:20px 0px;
+}
+.sobre-mi{
+padding:20px;
+font-size:18px;
+}
+
+.foto{
+width:150px;
+}
+
+  .tarjeta{
+        width:100%;
+        margin:1%;
+        float:left;
+    }
+
+.texto p{
+font-size:14px;
+}
+
+.proyectos h1{
+font-size:28px;
+}
+
+.footer{
+text-align:center;
+padding-right:0;
+}
+}
+
+@media (max-width: 300px){
+
+    .principal{
+padding:20px 0px;
+max-height: 390px;
+}
+.texto h1{
+font-size:24px;
+}
+
+.texto button{
+font-size:16px;
+padding:8px;
+}
+
+ .tarjeta{
+       width:100%;
+       margin:2%;
+       height:auto;
+       padding-bottom:20px;
+    }
+
+    .tarjeta button{
+        position:static;
+        transform:none;
+        margin-top:10px;
+    }
+
 }
