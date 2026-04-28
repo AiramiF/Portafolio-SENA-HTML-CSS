@@ -4,7 +4,6 @@ font-family: Arial;
 overflow-x: hidden; 
 }
 
-
 .menu{
 background:#2f3640;
 color:white;
@@ -57,9 +56,10 @@ width:100%;
 
 .texto{
 width:55%;
+font-size: 25px;
 float:right;
 margin:0;
-padding-top:40px; 
+padding-top:110px; 
 }
 
 .texto h1{
@@ -95,7 +95,6 @@ width:220px;
 border-radius:50%;
 }
 
-
 .proyectos{
 text-align:center;
 padding:20px 0; 
@@ -114,7 +113,6 @@ margin:auto;
 overflow:hidden;
 }
 
-
 .tarjeta{
 width:23%;
 float:left;
@@ -129,20 +127,17 @@ padding-bottom:60px;
 border-radius: 6px;
 }
 
-
 .img-card{
 width:100%;
 height:180px;
 overflow:hidden;
 }
 
-
 .img-card img{
 width:100%;
 height:100%;
 object-fit:cover;
 }
-
 
 .tarjeta p{
 font-size:14px;
@@ -180,6 +175,19 @@ box-sizing:border-box;
         float:left;
     }
 
+    .imagen{
+        width: 100%;
+    }
+
+    .texto{
+    width: 100%;
+    margin: 0px;
+    padding-top: 30px;
+    }
+
+    .principal{
+        padding: 30px ;
+    }
 }
 
 @media (max-width: 800px){
