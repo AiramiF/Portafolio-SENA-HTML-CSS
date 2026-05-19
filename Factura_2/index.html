@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Factura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
+  
+</head>
+<body>
+
+  <div class="factura">
+
+    <!-- =============================================
+         DIV 1 — Encabezado: Logo + Empresa + Tagline
+         Fondo gris claro | columna izq | fila 1
+    ============================================= -->
+    <div class="div1-encabezado">
+      <div class="logo-sena">
+        <img src="logo-SENAA.png" alt="Logo SENA" />
+      </div>
+      <div class="info-empresa">
+        <h1>Servicio Nacional de Aprendizaje</h1>
+        <p>Análisis y Desarrollo de Software</p>
+      </div>
+    </div>
+
+    <!-- =============================================
+         DIV 2 — Título "FACTURA"
+         Fondo gris muy oscuro | columna der | fila 1
+    ============================================= -->
+    <div class="div2-titulo">
+      <h2>Factura</h2>
+    </div>
+
+    <!-- =============================================
+         DIV 3 — Notas adicionales + Datos del cliente
+         Fondo blanco | columna izq | fila 2
+    ============================================= -->
+    <div class="div3-notas-cliente">
+      <div class="notas">
+        <h3>Notas adicionales</h3>
+        <p>Una vez abierto el producto, no se aceptan devoluciones.</p>
+      </div>
+      <div class="cliente">
+        <h3>Facturar a:</h3>
+        <p class="nombre-cliente">Fernanda Gonzalez</p>
+        <p>Carrera 9 # 5 - 38</p>
+        <p>San Gil</p>
+        <p>Colombia</p>
+      </div>
+    </div>
+
+    <!-- =============================================
+         DIV 4 — Fechas y número de factura
+         Fondo gris oscuro (más claro que div2) | columna der | fila 2
+    ============================================= -->
+    <div class="div4-datos-factura">
+      <div class="dato-factura">
+        <div class="etiqueta">Fecha de Emisión:</div>
+        <div class="valor">01 / 02 / 2020</div>
+      </div>
+      <div class="dato-factura">
+        <div class="etiqueta">Fecha de Vencimiento:</div>
+        <div class="valor">01 / 16 / 2020</div>
+      </div>
+      <div class="dato-factura">
+        <div class="etiqueta">Número de Factura:</div>
+        <div class="valor">#22148</div>
+      </div>
+    </div>
+
+    <!-- =============================================
+         DIV 5 — Tabla de productos (#, descripción, precio)
+         Fondo gris claro (igual div1) | columna izq | fila 3
+    ============================================= -->
+    <div class="div5-tabla-productos">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Descripción del producto</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Proyector</td>
+            <td>$30,50</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Computador</td>
+            <td>$50,00</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Teclado</td>
+            <td>$70,00</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Silla</td>
+            <td>$20,00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- =============================================
+         DIV 6 — Tabla Qty y Total (continúa div5)
+         Fondo gris muy oscuro (igual div2) | columna der | fila 3
+    ============================================= -->
+    <div class="div6-tabla-qty">
+      <table>
+        <thead>
+          <tr>
+            <th>Qty</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3</td>
+            <td>$31,50</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>$50,00</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>$70,00</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>$40,00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- =============================================
+         DIV 7 — Términos, pago y etiquetas de totales
+         Fondo blanco | columna izq | fila 4
+    ============================================= -->
+    <div class="div7-inferior-izq">
+
+      <div class="tabla-etiquetas">
+        <span>Subtotal</span>
+        <span>Impuestos</span>
+        <span>Envío</span>
+        <span>Descuento</span>
+      </div>
+      <div class="total-label">TOTAL</div>
+
+      <div class="seccion-terminos">
+        <h3>Términos y condiciones</h3>
+        <p>En caso de que el producto genere alguna deformidad o infección, no nos hacemos responsables.</p>
+      </div>
+
+      <div class="seccion-pago">
+        <h3>Método de pago</h3>
+        <div class="opciones-pago">
+          <label><input type="checkbox" /> Efectivo</label>
+          <label><input type="checkbox" /> Cheque</label>
+          <label><input type="checkbox" /> Tarjeta de crédito</label>
+        </div>
+        <div class="campos-tarjeta">
+          <div class="fila-campo">
+            <span>Nombre del titular:</span>
+            <input type="text" class="input-largo" placeholder="" />
+          </div>
+          <div class="fila-campo">
+            <span>Venc:</span>
+            <input type="text" class="input-medio" placeholder="MM/AA" />
+            <span>Venc:</span>
+            <input type="text" class="input-corto" placeholder="" />
+            <span>CVV:</span>
+            <input type="text" class="input-corto" placeholder="***" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =============================================
+         DIV 8 — Valores numéricos de totales + Firma
+         Fondo gris oscuro (igual div4) | columna der | fila 4
+    ============================================= -->
+    <div class="div8-inferior-der">
+
+      <div class="tabla-valores">
+        <span>$251,50</span>
+        <span>$0,00</span>
+        <span>$0,00</span>
+        <span>0%</span>
+      </div>
+      <div class="total-valor"><strong>$251,50</strong></div>
+
+      <div class="firma-area">
+        <div class="firma">Firma</div>
+      </div>
+
+    </div>
+
+  </div><!-- fin .factura -->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 15px;
+    }
+
+    .factura {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      grid-template-rows: auto auto auto auto;
+      width: 100%;
+      max-width: 780px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .div1-encabezado {
+      grid-column: 1;
+      grid-row: 1;
+      background-color: #e8e8e8;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .div1-encabezado .logo-sena img {
+      width: 70px;
+      height: auto;
+    }
+
+    .div1-encabezado .info-empresa h1 {
+      font-size: clamp(12px, 2vw, 17px);
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .div1-encabezado .info-empresa p {
+      font-size: clamp(9px, 1.2vw, 11px);
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    .div2-titulo {
+      grid-column: 2;
+      grid-row: 1;
+      background-color: #2a2d34;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .div2-titulo h2 {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .div3-notas-cliente {
+      grid-column: 1;
+      grid-row: 2;
+      background-color: #ffffff;
+      padding: 22px 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .div3-notas-cliente .notas h3,
+    .div3-notas-cliente .cliente h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .div3-notas-cliente .notas p {
+      font-size: 11px;
+      color: #888;
+      line-height: 1.6;
+      max-width: 230px;
+    }
+
+    .div3-notas-cliente .cliente {
+      text-align: right;
+    }
+
+    .div3-notas-cliente .cliente p {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    .div3-notas-cliente .cliente .nombre-cliente {
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .div4-datos-factura {
+      grid-column: 2;
+      grid-row: 2;
+      background-color: #3a3f47;
+      color: #ffffff;
+      padding: 22px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .div4-datos-factura .dato-factura {
+      text-align: center;
+    }
+
+    .div4-datos-factura .dato-factura .etiqueta {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin-bottom: 3px;
+    }
+
+    .div4-datos-factura .dato-factura .valor {
+      font-size: 9px;
+      font-weight: 400;
+      color: #aaaaaa;
+    }
+
+    .div5-tabla-productos {
+      grid-column: 1;
+      grid-row: 3;
+      background-color: #e8e8e8;
+      padding: 20px 65px;
+    }
+
+    .div5-tabla-productos table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .div5-tabla-productos thead th {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-align: left;
+      padding: 8px 40px;
+    }
+
+    .div5-tabla-productos thead th:last-child {
+      text-align: right;
+    }
+
+    .div5-tabla-productos tbody td {
+      font-size: 12px;
+      color: #444;
+      padding: 9px 40px;
+    }
+
+    .div5-tabla-productos tbody td:last-child {
+      text-align: right;
+    }
+
+    .div6-tabla-qty {
+      grid-column: 2;
+      grid-row: 3;
+      background-color: #2a2d34;
+      padding: 20px 35px;
+    }
+
+    .div6-tabla-qty table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .div6-tabla-qty thead th {
+      font-size: 12px;
+      font-weight: 700;
+      color: #dddddd;
+      text-align: left;
+      padding: 8px 6px;
+    }
+
+    .div6-tabla-qty thead th:last-child {
+      text-align: right;
+    }
+
+    .div6-tabla-qty tbody td {
+      font-size: 12px;
+      color: #f0f0f0;
+      padding: 9px 6px;
+    }
+
+    .div6-tabla-qty tbody td:last-child {
+      text-align: right;
+    }
+
+    .div7-inferior-izq {
+      grid-column: 1;
+      grid-row: 4;
+      background-color: #ffffff;
+      padding: 20px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .div7-inferior-izq .tabla-etiquetas {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      padding-left: 470px;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .div7-inferior-izq .tabla-etiquetas span {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.9;
+    }
+
+    .div7-inferior-izq .total-label {
+      font-size: 18px;
+      font-weight: 800;
+      color: #888;
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    .div7-inferior-izq .seccion-terminos h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .div7-inferior-izq .seccion-terminos p {
+      font-size: 11px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .div7-inferior-izq .seccion-pago h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .div7-inferior-izq .opciones-pago {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .div7-inferior-izq .opciones-pago label {
+      font-size: 11px;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .div7-inferior-izq .campos-tarjeta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .div7-inferior-izq .campos-tarjeta .fila-campo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #555;
+      flex-wrap: wrap;
+    }
+
+    .div7-inferior-izq .campos-tarjeta input[type="text"] {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 3px 6px;
+      font-size: 11px;
+      color: #444;
+      background-color: #f9f9f9;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .div7-inferior-izq .input-largo { width: 160px; }
+    .div7-inferior-izq .input-medio { width: 65px; }
+    .div7-inferior-izq .input-corto { width: 42px; }
+
+    .div8-inferior-der {
+      grid-column: 2;
+      grid-row: 4;
+      background-color: #3a3f47;
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .div8-inferior-der .tabla-valores {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .div8-inferior-der .tabla-valores span {
+      font-size: 11px;
+      color: #aaaaaa;
+      line-height: 1.9;
+      text-align: left;
+      display: block;
+    }
+
+    .div8-inferior-der .total-valor {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      text-align: left;
+      margin-top: 22px;
+    }
+
+    .div8-inferior-der .firma-area {
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    .div8-inferior-der .firma {
+      border-top: 2px solid #ffffff;
+      padding-top: 10px;
+      font-size: 13px;
+      color: #ffffff;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* ============================================================
+       RESPONSIVE — solo esto fue modificado
+    ============================================================ */
+
+    /* 580px: pasa a 1 columna */
+    @media (max-width: 580px) {
+      body { padding: 20px 10px; }
+
+      .factura {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .div1-encabezado    { grid-column: 1; grid-row: 1; }
+      .div2-titulo        { grid-column: 1; grid-row: 2; padding: 16px; }
+      .div3-notas-cliente { grid-column: 1; grid-row: 3; flex-direction: column; }
+      .div4-datos-factura {
+        grid-column: 1; grid-row: 4;
+        flex-direction: row; flex-wrap: wrap;
+        justify-content: space-around; padding: 16px;
+      }
+      .div5-tabla-productos { grid-column: 1; grid-row: 5; padding: 16px 20px; }
+      .div6-tabla-qty       { grid-column: 1; grid-row: 6; padding: 16px 20px; }
+      .div7-inferior-izq    { grid-column: 1; grid-row: 7; }
+      .div8-inferior-der    { grid-column: 1; grid-row: 8; }
+
+      /* tabla de productos: quitar padding fijo para que no se desborde */
+      .div5-tabla-productos thead th,
+      .div5-tabla-productos tbody td { padding: 8px 10px; }
+
+      /* etiquetas de totales a la izquierda en móvil */
+      .div7-inferior-izq .tabla-etiquetas { padding-left: 0; align-items: flex-start; }
+      .div7-inferior-izq .total-label     { text-align: left; }
+
+      .div3-notas-cliente .cliente { text-align: left; }
+    }
+
+    /* 420px: ajustes intermedios */
+    @media (max-width: 420px) {
+      .div1-encabezado { padding: 16px 14px; gap: 10px; }
+      .div1-encabezado .logo-sena img { width: 56px; }
+      .div7-inferior-izq { padding: 16px 14px; }
+      .div8-inferior-der { padding: 16px 14px; }
+    }
+
+    /* 380px y menos: mínimo 300px */
+    @media (max-width: 380px) {
+      body { padding: 12px 6px; }
+
+      .div1-encabezado {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 14px 12px;
+      }
+      .div1-encabezado .logo-sena img { width: 48px; }
+
+      .div3-notas-cliente { padding: 14px 12px; }
+      .div5-tabla-productos { padding: 14px 12px; }
+      .div7-inferior-izq { padding: 14px 12px; gap: 10px; }
+      .div8-inferior-der { padding: 14px 10px; }
+
+      .div5-tabla-productos thead th,
+      .div5-tabla-productos tbody td { padding: 6px 4px; font-size: 10px; }
+
+      .div6-tabla-qty thead th,
+      .div6-tabla-qty tbody td { font-size: 10px; padding: 6px 4px; }
+
+      .div7-inferior-izq .opciones-pago { flex-direction: column; gap: 6px; }
+
+      .div7-inferior-izq .campos-tarjeta .fila-campo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .div7-inferior-izq .input-largo,
+      .div7-inferior-izq .input-medio,
+      .div7-inferior-izq .input-corto { width: 100%; }
+    }
+  </style>
+</body>
+</html>
