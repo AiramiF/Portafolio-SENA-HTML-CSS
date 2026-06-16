@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectroFer – Explora nuestros productos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <div class="top-bar">
+    <div class="top-bar__inner">
+      <div class="top-bar__left">
+        <span>Esp</span>
+        <span>COP</span>
+      </div>
+      <div class="top-bar__right">
+        <a href="#">Únete a nosotros</a>
+        <a href="#">Inicia sesión</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HEADER PRINCIPAL ===================== -->
+  <header class="header">
+    <div class="header__inner">
+
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="ElectroFer – Inicio">
+        <svg class="logo__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+          <path d="M10 6h20l2 4H8L10 6z" fill="#0057D9"/>
+          <rect x="6" y="10" width="28" height="22" rx="3" fill="#0057D9"/>
+          <path d="M15 10v-3a5 5 0 0110 0v3" stroke="#fff" stroke-width="2" fill="none"/>
+        </svg>
+        <span class="logo__text">ElectroFer</span>
+      </a>
+
+      <!-- Menú de navegación -->
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="#" class="nav__link">Inicio</a></li>
+          <li><a href="#" class="nav__link">Tienda</a></li>
+          <li><a href="#" class="nav__link">Páginas</a></li>
+          <li><a href="#" class="nav__link">Acerca de</a></li>
+          <li><a href="#" class="nav__link">Blog</a></li>
+          <li><a href="#" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Buscador -->
+      <div class="search">
+        <input class="search__input" type="search" placeholder="¿Qué buscas?" aria-label="Buscar productos" />
+        <button class="search__btn" aria-label="Buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+
+      <!-- Íconos de acción -->
+      <div class="header__actions">
+        <a href="#" aria-label="Favoritos" class="action-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </a>
+        <a href="#" aria-label="Carrito" class="action-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </a>
+        <a href="#" aria-label="Mi cuenta" class="action-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main>
+
+    <!-- Breadcrumb + Título + Imagen decorativa -->
+    <section class="hero-bar">
+      <div class="hero-bar__inner">
+        <div class="hero-bar__text">
+          <nav class="breadcrumb" aria-label="Ruta de navegación">
+            <a href="#">Inicio</a>
+            <span aria-hidden="true"> &rsaquo; </span>
+            <a href="#">Tienda</a>
+          </nav>
+          <h1 class="page-title">Explora nuestros productos</h1>
+        </div>
+          <img
+            src="https://comsucre.com.ec/wp-content/uploads/2022/10/parlante-smart-amazon-alexa-echo-dot-4ta-generacion-negro-comsucre-ecuador-TG.PA_.B07XJ8C8F5.webp"
+            alt="Altavoz inteligente Alexa Echo"
+            width="159" height="120"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtros + Grid de productos -->
+    <section class="shop-layout">
+      <div class="shop-layout__inner">
+
+        <!-- ===== SIDEBAR DE FILTROS ===== -->
+        <aside class="sidebar" aria-label="Filtros de búsqueda">
+
+          <!-- Categorías -->
+          <div class="filter-group">
+            <div class="filter-group__header">
+              <h2 class="filter-group__title">Categorías</h2>
+              <span class="filter-group__dash" aria-hidden="true">–</span>
+            </div>
+            <ul class="filter-list">
+              <li><label class="filter-radio"><input type="radio" name="cat" /> Teclados</label></li>
+              <li><label class="filter-radio"><input type="radio" name="cat" /> Mandos</label></li>
+              <li><label class="filter-radio"><input type="radio" name="cat" /> Audio</label></li>
+              <li><label class="filter-radio"><input type="radio" name="cat" /> Monitor</label></li>
+              <li><label class="filter-radio"><input type="radio" name="cat" /> Mouse</label></li>
+            </ul>
+          </div>
+
+          <!-- Género -->
+          <div class="filter-group">
+            <div class="filter-group__header">
+              <h2 class="filter-group__title">Género</h2>
+              <span class="filter-group__dash" aria-hidden="true">–</span>
+            </div>
+            <ul class="filter-list">
+              <li><label class="filter-radio"><input type="radio" name="gen" /> Hombre</label></li>
+              <li><label class="filter-radio"><input type="radio" name="gen" /> Mujer</label></li>
+              <li><label class="filter-radio"><input type="radio" name="gen" /> Trans</label></li>
+            </ul>
+          </div>
+
+          <!-- Colores -->
+          <div class="filter-group">
+            <div class="filter-group__header">
+              <h2 class="filter-group__title">Colores</h2>
+              <span class="filter-group__dash" aria-hidden="true">–</span>
+            </div>
+            <div class="color-swatches" role="group" aria-label="Filtrar por color">
+              <button class="swatch swatch--red" aria-label="Negro"></button>
+              <button class="swatch swatch--black" aria-label="Azul"></button>
+              <button class="swatch swatch--blue" aria-label="Blanco"></button>
+              <button class="swatch swatch--pink" aria-label="Negro"></button>
+              <button class="swatch swatch--yellow" aria-label="Azul"></button>
+              <button class="swatch swatch--white" aria-label="Blanco"></button>
+              <button class="swatch swatch--darkblue" aria-label="Blanco"></button>
+
+            </div>
+          </div>
+
+          <!-- Tamaño -->
+          <div class="filter-group">
+            <div class="filter-group__header">
+              <h2 class="filter-group__title">Tamaño</h2>
+              <span class="filter-group__dash" aria-hidden="true">–</span>
+            </div>
+            <div class="tag-grid">
+              <button class="tag">4XL</button>
+              <button class="tag">3XL</button>
+              <button class="tag">XXL</button>
+              <button class="tag">XL</button>
+              <button class="tag">L</button>
+              <button class="tag">M</button>
+              <button class="tag">S</button>
+            </div>
+          </div>
+
+          <!-- Precio -->
+          <div class="filter-group">
+            <div class="filter-group__header">
+              <h2 class="filter-group__title">Precio</h2>
+              <span class="filter-group__dash" aria-hidden="true">–</span>
+            </div>
+            <div class="tag-grid">
+              <button class="tag">$4'000.000</button>
+              <button class="tag">$3'000.000</button>
+              <button class="tag">$2'000.000</button>
+              <button class="tag">$1'500.000</button>
+              <button class="tag">$1'000.000</button>
+              <button class="tag">$800.000</button>
+              <button class="tag">$600.000</button>
+              <button class="tag">$400.000</button>
+              <button class="tag">$200.000</button>
+            </div>
+          </div>
+
+          <!-- Botón Reiniciar -->
+          <button class="btn-reset" type="button">Reinicia</button>
+        </aside>
+
+        <!-- ===== GRID DE PRODUCTOS ===== -->
+        <div class="products-area">
+          <div class="products-grid">
+
+            <!-- Producto 1 – Audífonos Apple -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./Airpods.png"
+                  alt="Audífonos Apple AirPods Pro"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Audífonos Apple AirPods Pro</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$320.000</span>
+                  <span class="price-old">$355.000</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 2 – Mando PlayStation -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./MandoPlay.png"
+                  alt="Mando PlayStation DualSense"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Mando PlayStation DualSense</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$240.000</span>
+                  <span class="price-old">$266.000</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 3 – Teclado -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./Teclado.png"
+                  alt="Teclado mecánico RGB"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Teclado Mecánico RGB</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$180.000</span>
+                  <span class="price-old">$200.000</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 4 – Cámara -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./Camara.png"
+                  alt="Cámara digital mirrorless"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Cámara Digital Mirrorless</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$1.450.000</span>
+                  <span class="price-old">$1.611.000</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 5 – Parlantes -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./Parlantes.png"
+                  alt="Parlantes portátiles Bluetooth"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Parlantes Portátiles Bluetooth</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$210.000</span>
+                  <span class="price-old">$233.000</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 6 – Almacenamiento -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./SSD.png"
+                  alt="Disco SSD externo"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Disco SSD Externo 1TB</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$290.000</span>
+                  <span class="price-old">$322.000</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 7 – Mouse -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./Mouse.png"
+                  alt="Mouse inalámbrico ergonómico"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Mouse Inalámbrico Ergonómico</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$95.000</span>
+                  <span class="price-old">$105.000</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 8 – Control Xbox -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./Mandoxbox.png"
+                  alt="Control Xbox Series X"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Control Xbox Series X</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$230.000</span>
+                  <span class="price-old">$255.000</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Producto 9 – Audífonos Gamer -->
+            <article class="product-card">
+              <div class="product-card__img-wrap">
+                <img
+                  src="./Audifonos.png"
+                  alt="Audífonos Gamer con micrófono"
+                  loading="lazy"
+                />
+                <span class="badge">-10%</span>
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__name">Audífonos Gamer con Micrófono</p>
+                <div class="product-card__prices">
+                  <span class="price-new">$185.000</span>
+                  <span class="price-old">$205.000</span>
+                </div>
+              </div>
+            </article>
+
+          </div><!-- /products-grid -->
+
+          <div class="load-more">
+  <button class="load-more__btn" type="button">Cargar más</button>
+</div>
+
+        </div><!-- /products-area -->
+
+      </div><!-- /shop-layout__inner -->
+    </section>
+
+    <!-- ===================== NEWSLETTER ===================== -->
+    <section class="newsletter" aria-label="Suscripción al boletín">
+      <div class="newsletter__inner">
+        <div class="newsletter__content">
+          <h2 class="newsletter__title">Obtén actualizaciones semanales</h2>
+          <div class="newsletter__form">
+            <label for="email-nl" class="sr-only">Correo electrónico</label>
+            <input id="email-nl" class="newsletter__input" type="email" placeholder="Pon tu correo aquí :D" />
+            <button class="newsletter__btn" type="button">Suscribirse</button>
+          </div>
+          <p class="newsletter__url">www.AccesoriosElectroFer.com</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BENEFICIOS ===================== -->
+    <section class="benefits" aria-label="Beneficios de compra">
+      <div class="benefits__inner">
+
+        <div class="benefit-item">
+          <div class="benefit-item__icon" aria-hidden="true">
+            <!-- Entrega -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <p class="benefit-item__text">Entrega segura y rápida</p>
+          
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-item__icon" aria-hidden="true">
+            <!-- Garantía -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <p class="benefit-item__text">Garantía devolución de dinero</p>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-item__icon" aria-hidden="true">
+            <!-- Política -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <p class="benefit-item__text">Política de 24 horas en devolución</p>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-item__icon" aria-hidden="true">
+            <!-- Soporte -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <p class="benefit-item__text">Soporte de calidad</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__inner">
+
+        <!-- Soporte -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">Soporte</h3>
+          <address class="footer-col__address">
+  <p>Calle 123 #45-67, Bogotá, Colombia</p>
+
+  <div class="footer-col__contact">
+    <a href="mailto:soporte@electrofer.com" class="footer-col__contact-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      soporte@electrofer.com
+    </a>
+    <a href="tel:+573001234567" class="footer-col__contact-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+      +57 300 123 4567
+    </a>
+  </div>
+</address>
+        </div>
+
+        <!-- Cuenta -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">Cuenta</h3>
+          <ul class="footer-col__list">
+            <li><a href="#">Mi cuenta</a></li>
+            <li><a href="#">Mis pedidos</a></li>
+            <li><a href="#">Lista de deseos</a></li>
+            <li><a href="#">Seguir pedido</a></li>
+          </ul>
+        </div>
+
+        <!-- Link Rápido -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">Link Rápido</h3>
+          <ul class="footer-col__list">
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Términos de uso</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Descarga nuestra App -->
+        <div class="footer-col footer-col--app">
+          <h3 class="footer-col__title">Descarga nuestra App</h3>
+          <p class="footer-col__desc">Ahorra 5mil pesos, solo para usuarios de la App</p>
+          <div class="app-buttons">
+            <div class="app-qr" aria-label="Código QR">
+              <!-- QR simulado con CSS -->
+              <div class="qr-box">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect width="80" height="80" fill="#fff"/>
+                  <!-- QR pattern simplificado -->
+                  <rect x="5" y="5" width="25" height="25" fill="none" stroke="#000" stroke-width="3"/>
+                  <rect x="11" y="11" width="13" height="13" fill="#000"/>
+                  <rect x="50" y="5" width="25" height="25" fill="none" stroke="#000" stroke-width="3"/>
+                  <rect x="56" y="11" width="13" height="13" fill="#000"/>
+                  <rect x="5" y="50" width="25" height="25" fill="none" stroke="#000" stroke-width="3"/>
+                  <rect x="11" y="56" width="13" height="13" fill="#000"/>
+                  <rect x="37" y="5" width="5" height="5" fill="#000"/>
+                  <rect x="37" y="13" width="5" height="5" fill="#000"/>
+                  <rect x="37" y="21" width="5" height="5" fill="#000"/>
+                  <rect x="5" y="37" width="5" height="5" fill="#000"/>
+                  <rect x="13" y="37" width="5" height="5" fill="#000"/>
+                  <rect x="21" y="37" width="5" height="5" fill="#000"/>
+                  <rect x="37" y="37" width="5" height="5" fill="#000"/>
+                  <rect x="45" y="37" width="5" height="5" fill="#000"/>
+                  <rect x="53" y="37" width="5" height="5" fill="#000"/>
+                  <rect x="61" y="37" width="5" height="5" fill="#000"/>
+                  <rect x="69" y="37" width="5" height="5" fill="#000"/>
+                  <rect x="37" y="45" width="5" height="5" fill="#000"/>
+                  <rect x="45" y="45" width="5" height="5" fill="#000"/>
+                  <rect x="53" y="53" width="5" height="5" fill="#000"/>
+                  <rect x="61" y="61" width="5" height="5" fill="#000"/>
+                  <rect x="45" y="61" width="5" height="5" fill="#000"/>
+                  <rect x="69" y="53" width="5" height="5" fill="#000"/>
+                  <rect x="37" y="61" width="5" height="5" fill="#000"/>
+                  <rect x="69" y="69" width="5" height="5" fill="#000"/>
+                </svg>
+              </div>
+            </div>
+            <div class="store-buttons">
+              <a href="#" class="store-btn" aria-label="Descargar en App Store">
+                <svg class="store-btn__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                App Store
+              </a>
+              <a href="#" class="store-btn" aria-label="Descargar en Google Play">
+                <svg class="store-btn__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76c.28.16.6.2.92.12l11.2-6.47-2.5-2.51-9.62 8.86zM.35 1.12C.13 1.42 0 1.83 0 2.33v19.33c0 .5.13.91.36 1.21l.06.06 10.83-10.83v-.25L.41 1.06l-.06.06zM20.67 10.5l-2.87-1.66-2.82 2.82 2.82 2.82 2.89-1.67c.82-.48.82-1.25-.02-1.31zM3.18.24l11.2 6.47-2.5 2.51L2.26.36C2.54.12 2.9.08 3.18.24z"/></svg>
+                Google Play
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Copyright + métodos de pago -->
+    <div class="footer__bottom">
+  <div class="footer__bottom-inner">
+
+    <!-- Redes sociales -->
+    <div class="footer__social">
+      <a href="#" aria-label="Facebook" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" aria-label="Twitter / X" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="#" aria-label="LinkedIn" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="footer__copy">© 2026. Todos los derechos reservados por <strong>FernandaGDz</strong></p>
+
+    <!-- Métodos de pago -->
+    <div class="footer__payments">
+      <span>Aceptamos</span>
+      <!-- PayPal -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="20" aria-label="PayPal"><text y="16" font-size="7" font-weight="bold" fill="#003087">Pay</text><text x="9" y="16" font-size="7" font-weight="bold" fill="#009cde">Pal</text></svg>
+      <!-- Mastercard -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 24" width="38" height="24" aria-label="Mastercard">
+        <rect width="38" height="24" rx="4" fill="#252525"/>
+        <circle cx="15" cy="12" r="7" fill="#EB001B"/>
+        <circle cx="23" cy="12" r="7" fill="#F79E1B"/>
+        <path d="M19 6.8a7 7 0 0 1 0 10.4A7 7 0 0 1 19 6.8z" fill="#FF5F00"/>
+      </svg>
+      <!-- Visa -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 16" width="50" height="20" aria-label="Visa"><text y="13" font-size="14" font-weight="bold" font-style="italic" fill="#1A1F71" font-family="Arial">VISA</text></svg>
+    </div>
+
+  </div>
+</div>
+  </footer>
+
+</body>
+</html>
