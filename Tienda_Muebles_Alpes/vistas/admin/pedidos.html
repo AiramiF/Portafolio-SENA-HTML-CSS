@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos - Admin</title>
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Header Admin -->
+        <header class="admin-header">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: var(--spacing-lg);">
+                    <div class="logo" style="color: var(--color-accent); font-family: var(--font-family-base); font-size: 1.2rem;">Panel Admin</div>
+                    <nav class="admin-nav">
+                        <a href="dashboard.html">Resumen</a>
+                        <a href="muebles.html">Muebles</a>
+                        <a href="clientes.html">Clientes</a>
+                        <a href="pedidos.html" class="active">Pedidos</a>
+                        <a href="reportes.html">Reportes</a>
+                    </nav>
+                </div>
+                <div class="header-actions">
+                    <a href="../../index.html" style="font-size: 0.9rem; margin-right: 15px; color: var(--text-secondary);">← Tienda</a>
+                    <span id="user-email" style="margin-right: 15px; font-weight: 500; font-size: 0.9rem;"></span>
+                    <button id="btn-logout" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Cerrar Sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-main container" style="max-width: 1200px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl); flex-wrap: wrap; gap: var(--spacing-sm);">
+                <div>
+                    <h1 style="margin-bottom: var(--spacing-xs);">Gestión de Pedidos</h1>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Visualiza, filtra y gestiona el estado de todos los pedidos.</p>
+                </div>
+                <div style="display: flex; gap: var(--spacing-sm); align-items: center;">
+                    <span id="pedidos-count" style="font-size: 0.85rem; color: var(--text-secondary);"></span>
+                </div>
+            </div>
+
+            <!-- KPI resumen rápido -->
+            <div class="kpi-grid" style="margin-bottom: var(--spacing-xl);">
+                <div class="kpi-card kpi-orange" style="padding: var(--spacing-md) var(--spacing-lg);">
+                    <div class="kpi-info">
+                        <h4>Pendientes</h4>
+                        <div class="kpi-value" id="kpi-pendientes" style="font-size: 1.4rem;">--</div>
+                    </div>
+                </div>
+                <div class="kpi-card kpi-blue" style="padding: var(--spacing-md) var(--spacing-lg);">
+                    <div class="kpi-info">
+                        <h4>Procesando</h4>
+                        <div class="kpi-value" id="kpi-procesando" style="font-size: 1.4rem;">--</div>
+                    </div>
+                </div>
+                <div class="kpi-card kpi-purple" style="padding: var(--spacing-md) var(--spacing-lg);">
+                    <div class="kpi-info">
+                        <h4>Enviados</h4>
+                        <div class="kpi-value" id="kpi-enviados" style="font-size: 1.4rem;">--</div>
+                    </div>
+                </div>
+                <div class="kpi-card kpi-green" style="padding: var(--spacing-md) var(--spacing-lg);">
+                    <div class="kpi-info">
+                        <h4>Entregados</h4>
+                        <div class="kpi-value" id="kpi-entregados" style="font-size: 1.4rem;">--</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros -->
+            <div class="admin-card" style="margin-bottom: var(--spacing-xl);">
+                <div class="filter-bar">
+                    <div class="form-group">
+                        <label>Filtrar por Estado</label>
+                        <select id="filter-estado" class="form-control">
+                            <option value="">Todos</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Procesando">Procesando</option>
+                            <option value="Enviado">Enviado</option>
+                            <option value="Entregado">Entregado</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Desde</label>
+                        <input type="date" id="filter-desde" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Hasta</label>
+                        <input type="date" id="filter-hasta" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Buscar</label>
+                        <input type="text" id="filter-search" class="form-control" placeholder="Nº orden o cliente...">
+                    </div>
+                    <button class="btn btn-secondary" id="btn-limpiar-filtros" style="flex: none; padding: 10px 16px; text-transform: none;">Limpiar</button>
+                </div>
+            </div>
+
+            <!-- Tabla de Pedidos -->
+            <div class="admin-card" style="padding: 0; overflow: hidden;">
+                <div style="overflow-x: auto;">
+                    <table class="admin-table" style="margin: 0; box-shadow: none;">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Nº Orden</th>
+                                <th>Cliente</th>
+                                <th>Ciudad</th>
+                                <th style="text-align: right;">Total</th>
+                                <th>Estado</th>
+                                <th>Cambiar Estado</th>
+                                <th>Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-pedidos">
+                            <tr><td colspan="8" style="text-align: center; padding: 30px;">Cargando pedidos...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Detalle del Pedido -->
+    <div class="modal-overlay" id="modal-detalle">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 id="modal-titulo">Detalle del Pedido</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <p>Cargando...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="btn-modal-cerrar" style="flex: none; padding: 8px 20px;">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script type="module" src="../../js/admin/pedidos.js"></script>
+</body>
+</html>

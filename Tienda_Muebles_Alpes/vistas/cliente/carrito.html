@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Muebles los Alpes</title>
+    
+    
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .cart-item { display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-lg) 0; border-bottom: 1px solid #E5E7EB; }
+        .cart-item-img { width: 100px; height: 100px; object-fit: cover; border-radius: var(--border-radius-md); margin-right: var(--spacing-lg); background-color: #E5E7EB;}
+        .cart-item-info { flex: 1; }
+        .cart-summary { background-color: var(--bg-surface); padding: var(--spacing-xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); position: sticky; top: 100px; }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <span>📍 Envíos a todo el país</span>
+                <span>📞 (602) 884 1114</span>
+                <span>✉️ contacto@muebleslosalpes.co</span>
+            </div>
+        </div>
+
+        <!-- Header Principal -->
+        <header class="app-header">
+            <div class="container">
+                <a href="../../index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    Muebles los Alpes
+                </a>
+                
+                <nav class="main-nav">
+                    <a href="../../index.html">Inicio</a>
+                    <a href="catalogo.html?tipo=Interior">Interior</a>
+                    <a href="catalogo.html?tipo=Exterior">Exterior</a>
+                    <a href="catalogo.html">Catálogo</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" id="search-mueble" placeholder="Buscar muebles...">
+                    </div>
+                    
+                    <a href="carrito.html" style="color: var(--color-secondary); display: flex; align-items: center; gap: 5px; text-decoration: none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <span id="cart-count" style="background-color: var(--color-accent); color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; font-weight: bold;">0</span>
+                    </a>
+
+                    <div id="nav-auth-links">
+                        <a href="../login.html" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem;" id="btn-login">Ingresar</a>
+                        <div class="dropdown" id="dropdown-user" style="display:none;">
+                            <div class="user-info">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                Mi Cuenta
+                            </div>
+                            <div class="dropdown-content">
+                                <div id="user-email-display" style="padding: 10px 16px; font-size: 0.8rem; color: #666; border-bottom: 1px solid #eee;"></div>
+                                <a href="perfil.html">Mis Pedidos</a>
+                                <a href="perfil.html">Perfil</a>
+                                <div id="admin-menu-items"></div>
+                                <a href="#" id="btn-logout" style="color: var(--color-error);">Cerrar Sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-main container" style="display: flex; gap: var(--spacing-3xl); flex-wrap: wrap; padding: var(--spacing-2xl) 0; max-width: 1400px;">
+            
+            <div style="flex: 2; min-width: 300px;">
+                <nav class="breadcrumbs" style="margin-bottom: var(--spacing-md);">
+                    <a href="../../index.html">Inicio</a> <span class="separator">/</span> Mi Carrito
+                </nav>
+                <h1 style="margin-bottom: var(--spacing-lg); font-size: 2.5rem;">Tu Carrito de Compras</h1>
+                <div id="cart-items-container">
+                    <!-- Items del carrito -->
+                </div>
+                <div style="margin-top: var(--spacing-xl);">
+                    <a href="catalogo.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        Seguir Comprando
+                    </a>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 350px;">
+                <div class="cart-summary">
+                    <h2 style="margin-bottom: var(--spacing-md); font-size: var(--font-size-h4); border-bottom: 1px solid #E5E7EB; padding-bottom: var(--spacing-sm);">Resumen de Orden</h2>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm); margin-top: var(--spacing-md);">
+                        <span style="color: var(--text-secondary);">Subtotal</span>
+                        <span id="summary-subtotal" style="font-weight: bold; font-size: 1.1rem;">$0</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-lg); border-bottom: 1px solid #E5E7EB; padding-bottom: var(--spacing-md);">
+                        <span style="color: var(--text-secondary);">Envío</span>
+                        <span style="font-weight: bold; color: var(--color-success);">¡Gratis!</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xl); font-size: var(--font-size-h4);">
+                        <strong>Total</strong>
+                        <strong id="summary-total" style="color: var(--color-secondary);">$0</strong>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;" id="btn-checkout">Proceder al Pago</button>
+                    
+                    <p id="auth-warning" style="color: var(--color-error); font-size: var(--font-size-small); margin-top: var(--spacing-sm); display: none; text-align: center;">
+                        * Debes iniciar sesión para poder comprar.
+                    </p>
+                    
+                    <div style="margin-top: var(--spacing-lg); text-align: center; color: var(--text-secondary); font-size: 0.8rem;">
+                        <p>🔒 Pago 100% seguro y encriptado</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Masivo -->
+        <footer class="app-footer">
+            <div class="container footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color: white; margin-bottom: 15px;">
+                        Muebles los Alpes
+                    </div>
+                    <p>Decora tu hogar con los mejores estilos. Calidad, diseño y confort para tus espacios interiores y exteriores.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Corporativo</h3>
+                    <ul>
+                        <li><a href="../estaticas/quienes_somos.html">Quiénes somos</a></li>
+                        <li><a href="../estaticas/tiendas.html">Tiendas físicas</a></li>
+                        <li><a href="#">Regala un bono</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Centro de Ayuda</h3>
+                    <ul>
+                        <li><a href="../estaticas/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+                        <li><a href="../estaticas/politicas_envio.html">Políticas de Envío</a></li>
+                        <li><a href="../estaticas/politicas_devolucion.html">Políticas de Devolución</a></li>
+                        <li><a href="../estaticas/terminos.html">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información Legal</h3>
+                    <p>📍 Cra. 5 No. 11-50, Cali - Valle</p>
+                    <p>📞 311 301 7298</p>
+                    <p>✉️ servicioalcliente@muebleslosalpes.co</p>
+                </div>
+            </div>
+            <div class="container footer-bottom">
+                &copy; 2026 Muebles los Alpes S.A.S. Todos los derechos reservados.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Script that uses Auth dropdown structure, we might need a small patch in carrito.js if it depended on old IDs, but we kept them the same (nav-auth-links, btn-logout, etc.) -->
+    <!-- However, we need to inject the dropdown info correctly. Let's make sure carrito.js works, or we will update it later. -->
+    <script type="module" src="../../js/cliente/carrito.js"></script>
+    <script>
+        // Simple search redirect
+        document.getElementById('search-mueble').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && e.target.value.trim() !== '') {
+                window.location.href = `catalogo.html?q=${encodeURIComponent(e.target.value.trim())}`;
+            }
+        });
+    </script>
+</body>
+</html>

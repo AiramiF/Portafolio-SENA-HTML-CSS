@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de presentación</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card">
+
+        <div class="avatar-wrap">
+            <img id="avatar" alt="Foto de perfil" src="">
+        </div>
+
+        <h1 id="nombre">Cargando…</h1>
+
+        <ul class="info-list">
+            <li class="info-item">
+                <span class="tag">Género</span>
+                <span class="value" id="genero">—</span>
+            </li>
+            <li class="info-item">
+                <span class="tag">Edad</span>
+                <span class="value" id="edad">—</span>
+            </li>
+            <li class="info-item">
+                <span class="tag">Correo</span>
+                <span class="value"><a id="email" href="#">—</a></span>
+            </li>
+            <li class="info-item">
+                <span class="tag">Teléfono</span>
+                <span class="value"><a id="telefono" href="#">—</a></span>
+            </li>
+            <li class="info-item">
+                <span class="tag">Ubicación</span>
+                <span class="value">
+                    <a id="ubicacion" class="map-link" href="#" target="_blank" rel="noopener">
+                        <span class="pin">📍</span><span id="ubicacion-texto">—</span>
+                    </a>
+                </span>
+            </li>
+        </ul>
+
+        <p class="footer-note"><a href="index.html" style="color:inherit;text-decoration:none;">← Volver a la lista</a></p>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const nombreEl = document.getElementById("nombre");
+            const imagenEl = document.getElementById("avatar");
+            const emailEl = document.getElementById("email");
+            const telefonoEl = document.getElementById("telefono");
+            const ubicacionEl = document.getElementById("ubicacion");
+            const ubicacionTextoEl = document.getElementById("ubicacion-texto");
+            const generoEl = document.getElementById("genero");
+            const edadEl = document.getElementById("edad");
+
+            // Traemos el usuario que quedó guardado al hacer click en la card
+            const data = localStorage.getItem("usuarioSeleccionado");
+
+            if(!data){
+                nombreEl.textContent = "Ningún usuario seleccionado";
+                return;
+            }
+
+            try {
+                const user = JSON.parse(data);
+
+                const nombreCompleto = `${user.name.first} ${user.name.last}`;
+                nombreEl.textContent = nombreCompleto;
+
+                imagenEl.src = user.picture.large;
+                imagenEl.alt = `Foto de ${nombreCompleto}`;
+
+                emailEl.textContent = user.email;
+                emailEl.href = `mailto:${user.email}`;
+
+                telefonoEl.textContent = user.phone;
+                telefonoEl.href = `tel:${user.phone}`;
+
+                const lat = user.location.coordinates.latitude;
+                const lng = user.location.coordinates.longitude;
+                const ciudad = `${user.location.city}, ${user.location.country}`;
+
+                ubicacionEl.href = `https://www.google.com/maps?q=${lat},${lng}`;
+                ubicacionTextoEl.textContent = ciudad;
+
+                generoEl.textContent = user.gender === "male" ? "Hombre" : "Mujer";
+                edadEl.textContent = `${user.dob.age} años`;
+
+            } catch (error) {
+                console.error(error);
+                nombreEl.textContent = "No se pudo cargar";
+            }
+        });
+    </script>
+</body>
+</html>

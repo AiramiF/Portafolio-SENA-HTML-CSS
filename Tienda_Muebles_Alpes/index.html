@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Muebles los Alpes</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">    <!-- Estilos Base -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div class="app-layout">
+
+        <!-- Top Bar (Optional small info bar) -->
+        <div class="top-bar">
+            <div class="container">
+                <span>📍 Envíos a todo el país</span>
+                <span>📞 (602) 884 1114</span>
+                <span>✉️ contacto@muebleslosalpes.co</span>
+            </div>
+        </div>
+
+        <!-- Header Principal -->
+        <header class="app-header">
+            <div class="container">
+                <a href="./index.html" class="logo">
+                    <!-- Icon placeholder for logo -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    Muebles los Alpes
+                </a>
+
+                <nav class="main-nav">
+                    <a href="./index.html">Inicio</a>
+                    <a href="./vistas/cliente/catalogo.html?tipo=Interior">Interior</a>
+                    <a href="./vistas/cliente/catalogo.html?tipo=Exterior">Exterior</a>
+                    <a href="./vistas/cliente/catalogo.html">Catálogo</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" id="global-search" placeholder="Buscar muebles...">
+                    </div>
+
+                    <a href="./vistas/cliente/carrito.html"
+                        style="color: var(--text-primary); display: flex; align-items: center; gap: 5px; text-decoration: none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span id="cart-count"
+                            style="background-color: var(--color-accent); color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; font-weight: bold;">0</span>
+                    </a>
+
+                    <div id="nav-auth-links">
+                        <!-- Default state (logged out) -->
+                        <a href="./vistas/login.html" class="btn btn-primary"
+                            style="padding: 6px 12px; font-size: 0.8rem;">Ingresar</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-main" style="padding-top: 0;">
+
+            <!-- Hero Section -->
+            <section class="hero">
+                <!-- Imagen de fondo de ejemplo (se puede cambiar) -->
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1920&q=80"
+                    alt="Muebles de sala" class="hero-bg">
+                <div class="container hero-content" style="text-align: center;">
+                    <h1>Diseño que Transforma tu Hogar</h1>
+                    <p>Descubre nuestra nueva colección de muebles de interior y exterior, diseñados para ofrecer
+                        comodidad, elegancia y durabilidad superior.</p>
+                    <a href="./vistas/cliente/catalogo.html" class="btn btn-primary"
+                        style="font-size: 1.1rem; padding: 15px 30px;">Ver Colección Completa</a>
+                </div>
+            </section>
+
+            <!-- Categorías -->
+            <section class="container" style="margin-top: var(--spacing-3xl);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl);">
+                    <div class="category-box">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+                            alt="Interior">
+                        <div
+                            style="position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 2;">
+                        </div>
+                        <div style="position: relative; z-index: 3; text-align: center; color: white;">
+                            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Interiores</h2>
+                            <a href="./vistas/cliente/catalogo.html?tipo=Interior" class="btn btn-primary">Explorar</a>
+                        </div>
+                    </div>
+                    <div class="category-box">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                            alt="Exterior">
+                        <div
+                            style="position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 2;">
+                        </div>
+                        <div style="position: relative; z-index: 3; text-align: center; color: white;">
+                            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Exteriores</h2>
+                            <a href="./vistas/cliente/catalogo.html?tipo=Exterior" class="btn btn-primary">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid de productos destacados -->
+            <section class="container" style="margin-top: var(--spacing-3xl); margin-bottom: var(--spacing-3xl);">
+                <h2 class="section-title">Nuevos Ingresos</h2>
+                <div id="destacados-grid" class="grid-products">
+                    <p style="text-align: center; grid-column: 1 / -1; color: var(--text-secondary);">Cargando colección
+                        exclusiva...</p>
+                </div>
+                <div style="text-align: center; margin-top: var(--spacing-2xl);">
+                    <a href="./vistas/cliente/catalogo.html" class="btn btn-secondary"
+                        style="padding: 12px 40px; font-size: 1rem;">Ver Todo el Catálogo</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Masivo -->
+        <footer class="app-footer">
+            <div class="container footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color: white; margin-bottom: 15px;">
+                        Muebles los Alpes
+                    </div>
+                    <p>Decora tu hogar con los mejores estilos. Calidad, diseño y confort para tus espacios interiores y
+                        exteriores.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Corporativo</h3>
+                    <ul>
+                        <li><a href="vistas/estaticas/quienes_somos.html">Quiénes somos</a></li>
+                        <li><a href="vistas/estaticas/tiendas.html">Tiendas físicas</a></li>
+                        <li><a href="#">Regala un bono</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Centro de Ayuda</h3>
+                    <ul>
+                        <li><a href="vistas/estaticas/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+                        <li><a href="vistas/estaticas/politicas_envio.html">Políticas de Envío</a></li>
+                        <li><a href="vistas/estaticas/politicas_devolucion.html">Políticas de Devolución</a></li>
+                        <li><a href="vistas/estaticas/terminos.html">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información Legal</h3>
+                    <p>📍 Cra. 5 No. 11-50, Cali - Valle</p>
+                    <p>📞 311 301 7298</p>
+                    <p>✉️ servicioalcliente@muebleslosalpes.co</p>
+                </div>
+            </div>
+            <div class="container footer-bottom">
+                &copy; 2026 Muebles los Alpes S.A.S. Todos los derechos reservados.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Script de inicialización de UI basada en Sesión -->
+    <script type="module">
+        import { getSession, logout, supabase } from './js/supabaseClient.js';
+
+        async function init() {
+            const session = await getSession();
+
+            if (session) {
+                const user = session.user;
+                const isAdmin = user.app_metadata?.role === 'admin';
+
+                let adminLinks = isAdmin ? `
+                    <a href="./vistas/admin/dashboard.html" style="color: var(--color-secondary); font-weight: bold; border-top: 1px solid #eee;">Panel Admin</a>
+                    <a href="./vistas/admin/muebles.html">Gestión Muebles</a>
+                    <a href="./vistas/admin/clientes.html">Gestión Clientes</a>
+                    <a href="./vistas/admin/reportes.html">Reportes</a>
+                ` : '';
+
+                const navLinks = document.getElementById('nav-auth-links');
+                navLinks.innerHTML = `
+                    <div class="dropdown">
+                        <div class="user-info">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            Mi Cuenta
+                        </div>
+                        <div class="dropdown-content">
+                            <div style="padding: 10px 16px; font-size: 0.8rem; color: #666; border-bottom: 1px solid #eee;">${user.email}</div>
+                            <a href="./vistas/cliente/perfil.html?tab=pedidos">Mis Pedidos</a>
+                            <a href="./vistas/cliente/perfil.html">Perfil</a>
+                            ${adminLinks}
+                            <a href="#" id="btn-logout" style="color: var(--color-error);">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('btn-logout').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    logout();
+                });
+            }
+
+            // Barra de búsqueda global
+            const searchInput = document.getElementById('global-search');
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                    window.location.href = `./vistas/cliente/catalogo.html?q=${encodeURIComponent(searchInput.value.trim())}`;
+                }
+            });
+
+            updateCartCount();
+            await loadDestacados();
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const total = cart.reduce((sum, item) => sum + item.cantidad, 0);
+            const countEl = document.getElementById('cart-count');
+            if (countEl) countEl.textContent = total;
+        }
+
+        // Toast Notification System
+        window.showToast = function(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.backgroundColor = type === 'success' ? 'var(--color-success)' : 'var(--color-error)';
+            toast.style.color = 'white';
+            toast.style.padding = '12px 24px';
+            toast.style.borderRadius = 'var(--border-radius-md)';
+            toast.style.boxShadow = 'var(--shadow-lg)';
+            toast.style.zIndex = '9999';
+            toast.style.fontWeight = 'bold';
+            toast.style.transition = 'opacity 0.3s ease';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        };
+
+        window.addToCartFast = function (id, nombre, precio, foto_url, stock) {
+            if (stock <= 0) {
+                showToast("Producto agotado.", 'error');
+                return;
+            }
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const index = cart.findIndex(item => item.id_productos === id);
+
+            if (index > -1) {
+                if (cart[index].cantidad + 1 <= stock) {
+                    cart[index].cantidad += 1;
+                } else {
+                    showToast("No hay suficiente stock para agregar otra unidad.", 'error');
+                    return;
+                }
+            } else {
+                cart.push({
+                    id_productos: id,
+                    nombre: nombre,
+                    precio: precio,
+                    foto_url: foto_url,
+                    cantidad: 1,
+                    max_stock: stock
+                });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+
+            // Opcional visual feedback
+            showToast("¡Producto añadido al carrito!");
+        }
+
+        async function loadDestacados() {
+            const grid = document.getElementById('destacados-grid');
+            if (!grid) return;
+
+            const { data, error } = await supabase
+                .from('productos')
+                .select('*')
+                .gt('stock', 0)
+                .limit(4) // 4 products look better in a grid
+                .order('id_productos', { ascending: false });
+
+            if (error || !data || data.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: var(--text-secondary);">No hay productos destacados en este momento.</p>';
+                return;
+            }
+
+            grid.innerHTML = data.map(p => `
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        ${p.foto_url
+                    ? `<img src="${p.foto_url}" alt="${p.nombre}">`
+                    : `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#999;">Sin Imagen</div>`}
+                        <div class="card-badge">Novedad</div>
+                    </div>
+                    <div class="card-content">
+                        <p class="cat">${p.tipo} - ${p.material || 'Estándar'}</p>
+                        <h3>${p.nombre}</h3>
+                        <p class="price">$ ${p.precio_venta.toLocaleString()}</p>
+                        <div class="card-actions" style="flex-wrap: wrap;">
+                            <a href="./vistas/cliente/detalle.html?id=${p.id_productos}" class="btn btn-secondary" style="flex: 1 1 100%; margin-bottom: 5px;">Ver Detalles</a>
+                            <button onclick="addToCartFast(${p.id_productos}, '${p.nombre.replace(/'/g, "\\'")}', ${p.precio_venta}, '${p.foto_url || ''}', ${p.stock})" class="btn btn-primary" style="flex: 1 1 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

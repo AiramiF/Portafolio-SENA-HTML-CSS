@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Muebles los Alpes</title>
+
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+
+<body>
+    <div class="app-layout">
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <span>📍 Envíos a todo el país</span>
+                <span>📞 (602) 884 1114</span>
+                <span>✉️ contacto@muebleslosalpes.co</span>
+            </div>
+        </div>
+
+        <!-- Header Principal -->
+        <header class="app-header">
+            <div class="container">
+                <a href="../../index.html" class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    Muebles los Alpes
+                </a>
+
+                <nav class="main-nav">
+                    <a href="../../index.html">Inicio</a>
+                    <a href="catalogo.html?tipo=Interior">Interior</a>
+                    <a href="catalogo.html?tipo=Exterior">Exterior</a>
+                    <a href="catalogo.html" style="color: var(--color-secondary);">Catálogo</a>
+                </nav>
+
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" id="search-mueble" placeholder="Buscar muebles...">
+                    </div>
+
+                    <a href="carrito.html"
+                        style="color: var(--text-primary); display: flex; align-items: center; gap: 5px; text-decoration: none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span id="cart-count"
+                            style="background-color: var(--color-accent); color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; font-weight: bold;">0</span>
+                    </a>
+
+                    <div id="nav-auth-links">
+                        <a href="../login.html" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.8rem;"
+                            id="btn-login">Ingresar</a>
+                        <div class="dropdown" id="dropdown-user" style="display:none;">
+                            <div class="user-info">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Mi Cuenta
+                            </div>
+                            <div class="dropdown-content">
+                                <div id="user-email-display"
+                                    style="padding: 10px 16px; font-size: 0.8rem; color: #666; border-bottom: 1px solid #eee;">
+                                </div>
+                                <a href="perfil.html">Mis Pedidos</a>
+                                <a href="perfil.html">Perfil</a>
+                                <div id="admin-menu-items"></div>
+                                <a href="#" id="btn-logout" style="color: var(--color-error);">Cerrar Sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-main container">
+            <nav class="breadcrumbs">
+                <a href="../../index.html">Inicio</a> <span class="separator">/</span> Catálogo
+            </nav>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xl); margin-top: var(--spacing-sm);">
+                <h1 style="color: var(--color-primary); margin-bottom: 0;">Catálogo de Productos</h1>
+            </div>
+
+            <div class="catalog-layout">
+                <!-- Sidebar de Filtros -->
+                <aside class="catalog-filters">
+                    <h3
+                        style="margin-bottom: var(--spacing-md); font-family: var(--font-family-base); font-size: 1.2rem;">
+                        Filtros</h3>
+
+                    <div class="filter-section">
+                        <h4>Disponibilidad</h4>
+                        <label class="filter-option">
+                            <input type="checkbox" id="filter-stock" checked> Ocultar Agotados
+                        </label>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Categorías</h4>
+                        <div id="filter-categories-container">
+                            <!-- JS poblará -->
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Tipo de Mueble</h4>
+                        <div id="filter-categoria-container">
+                            <!-- JS poblará -->
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Rango de Precio</h4>
+                        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                            <input type="number" id="price-min" class="form-control" placeholder="Min"
+                                style="padding: 8px;">
+                            <span>-</span>
+                            <input type="number" id="price-max" class="form-control" placeholder="Max"
+                                style="padding: 8px;">
+                        </div>
+                        <button class="btn btn-secondary" style="width: 100%; padding: 6px; margin-bottom: 10px;"
+                            id="btn-apply-price">Aplicar Rango</button>
+                        
+                        <!-- Sugerencias de Precio -->
+                        <div class="price-suggestions" style="display: flex; flex-direction: column; gap: 5px;">
+                            <button class="btn-price-suggestion" data-min="0" data-max="100000" style="background: none; border: 1px solid var(--color-secondary); color: var(--color-secondary); padding: 4px; border-radius: var(--border-radius-sm); cursor: pointer; font-size: 0.8rem;">Menos de $100.000</button>
+                            <button class="btn-price-suggestion" data-min="100000" data-max="500000" style="background: none; border: 1px solid var(--color-secondary); color: var(--color-secondary); padding: 4px; border-radius: var(--border-radius-sm); cursor: pointer; font-size: 0.8rem;">$100.000 - $500.000</button>
+                            <button class="btn-price-suggestion" data-min="500000" data-max="" style="background: none; border: 1px solid var(--color-secondary); color: var(--color-secondary); padding: 4px; border-radius: var(--border-radius-sm); cursor: pointer; font-size: 0.8rem;">Más de $500.000</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Materiales</h4>
+                        <div id="filter-materials-container">
+                            <!-- JS poblará -->
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Cuadrícula de Productos -->
+                <section class="catalog-grid-area">
+                    <div id="loading-msg"
+                        style="text-align: center; color: var(--text-secondary); margin: var(--spacing-3xl) 0;">Cargando
+                        productos...</div>
+                    <div class="grid-products" id="catalogo-grid">
+                        <!-- Productos renderizados aquí -->
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer Masivo -->
+        <footer class="app-footer">
+            <div class="container footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color: white; margin-bottom: 15px;">
+                        Muebles los Alpes
+                    </div>
+                    <p>Decora tu hogar con los mejores estilos. Calidad, diseño y confort para tus espacios interiores y
+                        exteriores.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Corporativo</h3>
+                    <ul>
+                        <li><a href="#">Quiénes somos</a></li>
+                        <li><a href="#">Tiendas físicas</a></li>
+                        <li><a href="#">Regala un bono</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Centro de Ayuda</h3>
+                    <ul>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Políticas de Envío</a></li>
+                        <li><a href="#">Políticas de Devolución</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información Legal</h3>
+                    <p>📍 Cra. 5 No. 11-50, Cali - Valle</p>
+                    <p>📞 311 301 7298</p>
+                    <p>✉️ servicioalcliente@muebleslosalpes.co</p>
+                </div>
+            </div>
+            <div class="container footer-bottom">
+                &copy; 2026 Muebles los Alpes S.A.S. Todos los derechos reservados.
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="../../js/cliente/catalogo.js"></script>
+</body>
+
+</html>

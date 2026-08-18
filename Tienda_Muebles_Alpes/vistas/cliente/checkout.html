@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Muebles los Alpes</title>
+    
+    
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .checkout-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-2xl); }
+        @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm); font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        
+        <!-- Header Minimalista para Checkout (Menos distracciones) -->
+        <header class="app-header">
+            <div class="container" style="justify-content: center; position: relative;">
+                <a href="../../index.html" class="logo" style="margin: 0 auto;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    Muebles los Alpes
+                </a>
+                
+                <div style="position: absolute; right: var(--spacing-xl); display: flex; align-items: center; gap: var(--spacing-md);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Pago Seguro</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-main container" style="padding: var(--spacing-2xl) 0;">
+            <nav class="breadcrumbs">
+                <a href="../../index.html">Inicio</a> <span class="separator">/</span> 
+                <a href="carrito.html">Mi Carrito</a> <span class="separator">/</span> 
+                Checkout
+            </nav>
+            <h1 class="section-title" style="text-align: left; margin-bottom: var(--spacing-xl);">Finalizar Compra</h1>
+
+            <div class="checkout-grid" id="checkout-content">
+                
+                <!-- Columna Izquierda: Formularios -->
+                <div style="display: flex; flex-direction: column; gap: var(--spacing-xl);">
+                    <div class="card" style="padding: var(--spacing-xl);">
+                        <h2 style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-h4); display: flex; align-items: center; gap: 10px;">
+                            <span style="background: var(--color-primary); color: white; width: 30px; height: 30px; display: inline-flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1rem;">1</span>
+                            Datos de Envío
+                        </h2>
+                        <div id="envio-info" style="color: var(--text-secondary); background: var(--bg-main); padding: var(--spacing-md); border-radius: var(--border-radius-sm);">
+                            Cargando tus datos...
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: var(--spacing-xl);">
+                        <h2 style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-h4); display: flex; align-items: center; gap: 10px;">
+                            <span style="background: var(--color-primary); color: white; width: 30px; height: 30px; display: inline-flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1rem;">2</span>
+                            Método de Pago
+                        </h2>
+                        <form id="form-pago">
+                            <div class="form-group" style="padding: var(--spacing-md); border: 1px solid #D1D5DB; border-radius: var(--border-radius-sm); margin-bottom: var(--spacing-sm);">
+                                <label style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                                    <input type="radio" name="metodo_pago" value="Tarjeta de Crédito" checked> 
+                                    <strong style="color: var(--text-primary);">Tarjeta de Crédito/Débito</strong>
+                                </label>
+                            </div>
+                            <div class="form-group" style="padding: var(--spacing-md); border: 1px solid #D1D5DB; border-radius: var(--border-radius-sm); margin-bottom: var(--spacing-sm);">
+                                <label style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                                    <input type="radio" name="metodo_pago" value="PSE"> 
+                                    <strong style="color: var(--text-primary);">PSE (Transferencia Bancaria)</strong>
+                                </label>
+                            </div>
+                            <div class="form-group" style="padding: var(--spacing-md); border: 1px solid #D1D5DB; border-radius: var(--border-radius-sm);">
+                                <label style="margin: 0; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                                    <input type="radio" name="metodo_pago" value="Efectivo en Tienda"> 
+                                    <strong style="color: var(--text-primary);">Pago en Efectivo (Contra entrega)</strong>
+                                </label>
+                            </div>
+
+                            <div class="form-group" style="margin-top: var(--spacing-xl);">
+                                <label for="descripcion" style="font-weight: bold;">Notas para el envío (Opcional)</label>
+                                <textarea id="descripcion" class="form-control" rows="3" placeholder="Ej. Dejar en portería, código de timbre..."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Resumen -->
+                <div>
+                    <div class="card" style="padding: var(--spacing-xl); position: sticky; top: 100px; align-self: flex-start;">
+                        <h2 style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-h4);">Resumen de tu Orden</h2>
+                        
+                        <div id="checkout-items" style="margin-bottom: var(--spacing-lg); border-bottom: 1px solid #E5E7EB; padding-bottom: var(--spacing-md); display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                            <!-- Items dinámicos -->
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-sm);">
+                            <span style="color: var(--text-secondary);">Subtotal</span>
+                            <span id="checkout-subtotal" style="font-weight: bold; font-size: 1.1rem;">$0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-lg); border-bottom: 1px solid #E5E7EB; padding-bottom: var(--spacing-md);">
+                            <span style="color: var(--text-secondary);">Envío</span>
+                            <span style="font-weight: bold; color: var(--color-success);">Gratis</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: var(--spacing-xl); font-size: var(--font-size-h3);">
+                            <strong>Total</strong>
+                            <strong id="checkout-total" style="color: var(--color-secondary);">$0</strong>
+                        </div>
+
+                        <button id="btn-confirmar" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">Confirmar y Pagar</button>
+                        
+                        <p id="msg-box" style="margin-top: var(--spacing-md); display: none; padding: var(--spacing-sm); border-radius: var(--border-radius-sm); font-size: 0.9rem; text-align: center; font-weight: bold;"></p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        
+        <!-- Footer Masivo -->
+        <footer class="app-footer">
+            <div class="container footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color: white; margin-bottom: 15px;">
+                        Muebles los Alpes
+                    </div>
+                    <p>Decora tu hogar con los mejores estilos. Calidad, diseño y confort para tus espacios interiores y exteriores.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Corporativo</h3>
+                    <ul>
+                        <li><a href="../estaticas/quienes_somos.html">Quiénes somos</a></li>
+                        <li><a href="../estaticas/tiendas.html">Tiendas físicas</a></li>
+                        <li><a href="#">Regala un bono</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Centro de Ayuda</h3>
+                    <ul>
+                        <li><a href="../estaticas/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+                        <li><a href="../estaticas/politicas_envio.html">Políticas de Envío</a></li>
+                        <li><a href="../estaticas/politicas_devolucion.html">Políticas de Devolución</a></li>
+                        <li><a href="../estaticas/terminos.html">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Información Legal</h3>
+                    <p>📍 Cra. 5 No. 11-50, Cali - Valle</p>
+                    <p>📞 311 301 7298</p>
+                    <p>✉️ servicioalcliente@muebleslosalpes.co</p>
+                </div>
+            </div>
+            <div class="container footer-bottom">
+                &copy; 2026 Muebles los Alpes S.A.S. Todos los derechos reservados.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal de Éxito -->
+    <div id="modal-success" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; z-index: 100; backdrop-filter: blur(5px);">
+        <div class="card" style="text-align: center; max-width: 500px; padding: var(--spacing-3xl); transform: scale(0.9); animation: modalIn 0.3s forwards ease-out;">
+            <div style="font-size: 5rem; margin: 0 auto var(--spacing-md) auto; display: flex; align-items: center; justify-content: center; background: #DEF7EC; color: var(--color-success); border-radius: 50%; width: 120px; height: 120px;">✓</div>
+            <h2 style="color: var(--text-primary); margin-bottom: var(--spacing-md); font-size: 2rem;">¡Compra Exitosa!</h2>
+            <p style="margin-bottom: var(--spacing-sm); font-size: 1.1rem;">Tu orden <strong id="orden-numero" style="color: var(--color-secondary);"></strong> ha sido confirmada.</p>
+            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-2xl);">Se ha enviado un recibo a tu correo con los detalles del envío.</p>
+            <a href="../../index.html" class="btn btn-primary" style="padding: 12px 30px;">Volver al Inicio</a>
+        </div>
+    </div>
+    
+    <style>
+        @keyframes modalIn {
+            to { transform: scale(1); }
+        }
+    </style>
+
+    <script type="module" src="../../js/cliente/checkout.js"></script>
+</body>
+</html>

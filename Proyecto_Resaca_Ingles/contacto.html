@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contáctanos - La Resaca Viewpoint Campestre</title>
+  <meta name="description" content="Ponte en contacto con La Resaca Viewpoint Campestre. Escríbenos para reservas, preguntas o sugerencias. Estamos en Mogotes, Santander, Colombia.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <script src="nav.js" defer></script>
+  <style>
+    /* ── ESTILOS PROPIOS DE LA PÁGINA DE CONTACTO ── */
+    /* Aquí se definen los estilos del hero, el panel de información y el formulario */
+
+    /* Hero banner */
+    .contact-hero {
+      background: linear-gradient(135deg, var(--dark-brown) 0%, #1a2e0a 40%, var(--warm-brown) 100%);
+      padding: 140px 48px 70px; /* Aumentado de 100px a 140px para empujar el texto debajo de la navegación sticky */
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(91,123,48,0.25) 0%, transparent 70%);
+    }
+
+    .contact-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .contact-hero-title span {
+      color: var(--light-gold);
+      font-style: italic;
+    }
+
+    .contact-hero-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      max-width: 620px; /* Aumentado ligeramente */
+      margin: 0 auto;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    /* Main layout */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 0;
+      max-width: 1200px; /* Reducido de 1400px a 1200px para que encaje mejor y no se vea tan estirado */
+      margin: 40px auto 80px; /* Añadido margen superior de 40px y margen inferior de 80px para separar del footer */
+      background: var(--section-bg);
+      border-radius: 16px; /* Añadidos bordes redondeados al contenedor principal */
+      overflow: hidden; /* Asegura que el fondo respete los bordes redondeados */
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08); /* Añadida una sombra elegante */
+    }
+
+    @media (max-width: 1240px) {
+      .contact-layout {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+        margin-bottom: 60px;
+      }
+    }
+
+    /* ── LEFT INFO PANEL ── */
+    .contact-info-panel {
+      background: var(--dark-brown);
+      padding: 60px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .contact-info-panel h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .contact-info-panel > p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      margin-top: -28px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-gold);
+    }
+
+    .info-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .info-text strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--light-gold);
+      margin-bottom: 6px;
+    }
+
+    .info-text span, .info-text a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      line-height: 1.6;
+      display: block;
+      transition: color 0.2s;
+    }
+
+    .info-text a:hover {
+      color: var(--light-gold);
+    }
+
+    .info-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Social icons in panel */
+    .panel-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .panel-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .panel-social a:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--light-gold);
+      color: var(--light-gold);
+    }
+
+    .panel-social svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* WhatsApp CTA */
+    .whatsapp-cta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(37,211,102,0.12);
+      border: 1px solid rgba(37,211,102,0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .whatsapp-cta:hover {
+      background: rgba(37,211,102,0.2);
+      transform: translateY(-2px);
+    }
+
+    .whatsapp-cta svg {
+      width: 28px;
+      height: 28px;
+      color: #25d366;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-cta-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .whatsapp-cta-text span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── RIGHT FORM PANEL ── */
+    .contact-form-panel {
+      background: var(--section-bg);
+      padding: 60px 56px;
+    }
+
+    @media (max-width: 640px) {
+      .contact-form-panel {
+        padding: 40px 24px;
+      }
+      .contact-info-panel {
+        padding: 40px 24px;
+      }
+    }
+
+    .form-panel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--dark-brown);
+      margin-bottom: 6px;
+    }
+
+    .form-panel-sub {
+      font-size: 13.5px;
+      color: var(--text-light);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    /* New form grid */
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 24px;
+    }
+
+    @media (max-width: 640px) {
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-form .full {
+      grid-column: 1 / -1;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--dark-brown);
+      margin-bottom: 0;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(36,55,14,0.15);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      margin: 0;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--warm-brown);
+      box-shadow: 0 0 0 3px rgba(12,92,55,0.1);
+    }
+
+    .form-field textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    /* Star rating */
+    .rating-block {
+      grid-column: 1 / -1;
+    }
+
+    .rating-block label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--dark-brown);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .stars-row {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .stars-row input {
+      display: none;
+    }
+
+    .stars-row label {
+      font-size: 32px;
+      color: rgba(36,55,14,0.2);
+      cursor: pointer;
+      transition: color 0.15s;
+      letter-spacing: 0;
+      text-transform: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .stars-row input:checked ~ label,
+    .stars-row label:hover,
+    .stars-row label:hover ~ label {
+      color: #f5a623;
+    }
+
+    /* Submit button */
+    .btn-submit {
+      grid-column: 1 / -1;
+      background: var(--warm-brown);
+      color: #fff;
+      border: none;
+      padding: 16px 32px;
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(12,92,55,0.25);
+    }
+
+    .btn-submit:hover {
+      background: var(--dark-brown);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(12,92,55,0.35);
+    }
+
+    /* Footer styles are now in styles.css */
+
+    /* ── FORMSPREE CUSTOM STYLING ── */
+    [data-fs-success] {
+      display: none;
+      background: rgba(12, 92, 55, 0.06);
+      border: 1.5px solid var(--warm-brown);
+      border-radius: 12px;
+      padding: 40px 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      animation: formspreeFadeIn 0.5s ease-out forwards;
+    }
+    
+    [data-fs-success][data-fs-active] {
+      display: block !important;
+    }
+
+    [data-fs-error] {
+      display: none;
+    }
+
+    [data-fs-error][data-fs-active] {
+      display: block !important;
+      color: #b02a2a !important;
+    }
+
+    [data-fs-error=""][data-fs-active] {
+      background: rgba(176, 42, 42, 0.06) !important;
+      border: 1.5px solid #b02a2a !important;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    [data-fs-error]:not([data-fs-error=""])[data-fs-active] {
+      font-size: 11px;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    [data-fs-field][aria-invalid="true"] {
+      border-color: #b02a2a !important;
+      box-shadow: 0 0 0 3px rgba(176, 42, 42, 0.1) !important;
+    }
+
+    @keyframes formspreeFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Página de contacto: aquí se muestra la información del lugar y el formulario -->
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-left" style="text-decoration: none;">
+      <div class="logo-img">
+        <img src="./img/logo.png" alt="La Resaca Viewpoint Logo">
+      </div>
+      <div class="nav-logo">
+        <span class="logo-script">La Resaca Viewpoint</span>
+        <span class="logo-sub">Campestre</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="sobre-nosotros.html" class="has-arrow">Sobre nosotros</a></li>
+      <li><a href="servicios.html" class="has-arrow">Servicios</a></li>
+      <li><a href="galeria.html" class="has-arrow">Galeria</a></li>
+      <li><a href="experiencias.html" class="has-arrow">Experiencias</a></li>
+    </ul>
+    <a href="contacto.html" class="btn-reservar">Contáctanos</a>
+
+    <button class="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="contact-hero">
+    <div class="ornament" style="margin-bottom: 28px;">
+      <div class="ornament-dot"></div>
+    </div>
+    <h1 class="contact-hero-title">Hablemos de tu <span>próxima visita</span></h1>
+    <p class="contact-hero-sub">Estamos listos para ayudarte a planear una experiencia única en el corazón de Santander. Escríbenos o llámanos.</p>
+  </section>
+
+  <!-- CONTACT TWO-PANEL LAYOUT -->
+  <div class="contact-layout">
+
+    <!-- LEFT: INFO PANEL -->
+    <aside class="contact-info-panel">
+      <div>
+        <h2>Información de contacto</h2>
+        <p>Ponemos a tu disposición todos nuestros canales para que nos escribas con total confianza.</p>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <a href="https://wa.me/573168462657" class="whatsapp-cta" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <div class="whatsapp-cta-text">
+          <strong>Escríbenos por WhatsApp</strong>
+          <span>+57 316 846 2657 — Respuesta rápida</span>
+        </div>
+      </a>
+
+      <div class="info-divider"></div>
+
+      <!-- Ubicación -->
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div class="info-text">
+          <strong>Ubicación</strong>
+          <span>Vereda Quebradas, Mogotes</span>
+          <span>Santander, Colombia</span>
+        </div>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </div>
+        <div class="info-text">
+          <strong>Teléfono</strong>
+          <a href="tel:+573168462657">+57 316 846 2657</a>
+        </div>
+      </div>
+
+      <!-- Horario -->
+      <div class="info-item">
+        <div class="info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="info-text">
+          <strong>Horario de atención</strong>
+          <span>Lunes a Viernes: 8am – 6pm</span>
+          <span>Sábados y Domingos: 8am – 8pm</span>
+        </div>
+      </div>
+
+      <div class="info-divider"></div>
+
+      <!-- Redes -->
+      <div>
+        <div class="info-text" style="margin-bottom: 14px;">
+          <strong>Síguenos en redes</strong>
+        </div>
+        <div class="panel-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://wa.me/573168462657" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT: FORM PANEL -->
+    <main class="contact-form-panel">
+      <h2 class="form-panel-title">Envíanos un mensaje</h2>
+      <p class="form-panel-sub">Completa el formulario y te responderemos en menos de 24 horas.</p>
+
+      <!-- Success message container (initially hidden) -->
+      <div data-fs-success>
+        <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(12, 92, 55, 0.1); border: 2px solid var(--warm-brown); display: flex; align-items: center; justify-content: center; color: var(--warm-brown); font-size: 30px; margin: 0 auto 20px;">✓</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; color: var(--dark-brown); margin-bottom: 12px;">¡Mensaje enviado con éxito!</h3>
+        <p style="color: var(--text-light); font-size: 14px; line-height: 1.6; max-width: 440px; margin: 0 auto;">Gracias por escribirnos. Hemos recibido tu mensaje y nos pondremos en contacto contigo en menos de 24 horas para ayudarte a planear tu visita.</p>
+      </div>
+
+      <!-- Global form-level error message container -->
+      <div data-fs-error></div>
+
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mlgvzbjv" method="POST">
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="form-field">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" data-fs-field>
+          <span data-fs-error="nombre"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" name="apellido" required placeholder="Tu apellido" data-fs-field>
+          <span data-fs-error="apellido"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" required placeholder="ejemplo@dominio.com" data-fs-field>
+          <span data-fs-error="email"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" required placeholder="Ej: 3112345678" data-fs-field>
+          <span data-fs-error="telefono"></span>
+        </div>
+
+        <div class="form-field full">
+          <label for="asunto">Asunto</label>
+          <select id="asunto" name="asunto" required data-fs-field>
+            <option value="" disabled selected>Selecciona un tema</option>
+            <option value="reserva">Reserva</option>
+            <option value="queja">Queja o reclamo</option>
+            <option value="sugerencia">Sugerencia</option>
+            <option value="informacion">Pregunta General / Información</option>
+            <option value="colaboracion">Propuesta de Colaboración</option>
+            <option value="feedback_estancia">Comentarios sobre mi Estancia</option>
+          </select>
+          <span data-fs-error="asunto"></span>
+        </div>
+
+        <div class="form-field full">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" required minlength="10" placeholder="Escribe tu mensaje aquí..." data-fs-field></textarea>
+          <span data-fs-error="mensaje"></span>
+        </div>
+
+        <!-- Star rating -->
+        <div class="rating-block">
+          <label>¿Cómo calificarías tu experiencia?</label>
+          <div class="stars-row" role="radiogroup">
+            <input type="radio" id="estrella5" name="estrellas" value="5" data-fs-field>
+            <label for="estrella5" title="Excelente">★</label>
+            <input type="radio" id="estrella4" name="estrellas" value="4" data-fs-field>
+            <label for="estrella4" title="Muy bueno">★</label>
+            <input type="radio" id="estrella3" name="estrellas" value="3" data-fs-field>
+            <label for="estrella3" title="Bueno">★</label>
+            <input type="radio" id="estrella2" name="estrellas" value="2" data-fs-field>
+            <label for="estrella2" title="Regular">★</label>
+            <input type="radio" id="estrella1" name="estrellas" value="1" data-fs-field>
+            <label for="estrella1" title="Malo">★</label>
+          </div>
+          <span data-fs-error="estrellas"></span>
+        </div>
+
+        <button type="submit" class="btn-submit" data-fs-submit-btn>Enviar mensaje →</button>
+      </form>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <span class="footer-logo">La Resaca Viewpoint</span>
+        <span class="footer-tagline">Campestre</span>
+        <p>Un destino de Turismo Sensorial y Regenerativo en el corazón de Santander. Magia Natural Pura para reconectarte con la tierra.</p>
+        <div class="footer-social" style="margin-top: 20px;">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://wa.me/573168462657" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="experiencias.html">Experiencias</a></li>
+        </ul>
+      </div>
+
+      <!-- Experiencias -->
+      <div class="footer-col">
+        <h4>Experiencias</h4>
+        <ul>
+          <li><a href="#">Bebidas Ancestrales</a></li>
+          <li><a href="#">Sky Yoga</a></li>
+          <li><a href="#">Taller Infantil</a></li>
+          <li><a href="#">Charlas con el Abuelo</a></li>
+          <li><a href="#">Gallina Criolla</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contact-info">
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Vereda Quebradas, Mogotes, Santander</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <a href="tel:+573168462657">+57 316 846 2657</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <a href="mailto:marijgomez07@gmail.com">marijgomez07@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer bottom bar -->
+    <div class="footer-bottom">
+      <p>© 2026 La Resaca Viewpoint Campestre. Todos los derechos reservados.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="#">Política de Privacidad</a></li>
+        <li><a href="#">Términos de Uso</a></li>
+      </ul>
+    </div>
+  </footer>
+
+
+
+  <!-- Formspree JS SDK integration -->
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', {
+      formElement: '#contactForm',
+      formId: 'mlgvzbjv',
+      onSuccess: function(formInfo) {
+        // Smoothly hide form and show the success message
+        var form = formInfo.form;
+        form.style.display = 'none';
+        
+        // Hide form intro text since form is submitted
+        var subTitle = document.querySelector('.form-panel-sub');
+        if (subTitle) {
+          subTitle.style.display = 'none';
+        }
+      }
+    });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>

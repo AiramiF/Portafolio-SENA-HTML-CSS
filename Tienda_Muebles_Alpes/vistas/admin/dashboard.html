@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Muebles los Alpes</title>
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Header Admin -->
+        <header class="admin-header">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: var(--spacing-lg);">
+                    <div class="logo" style="color: var(--color-accent); font-family: var(--font-family-base); font-size: 1.2rem;">Panel Admin</div>
+                    <nav class="admin-nav">
+                        <a href="dashboard.html" class="active">Resumen</a>
+                        <a href="muebles.html">Muebles</a>
+                        <a href="clientes.html">Clientes</a>
+                        <a href="pedidos.html">Pedidos</a>
+                        <a href="reportes.html">Reportes</a>
+                    </nav>
+                </div>
+                <div class="header-actions">
+                    <a href="../../index.html" style="font-size: 0.9rem; margin-right: 15px; color: var(--text-secondary);">← Tienda</a>
+                    <span id="user-email" style="margin-right: 15px; font-weight: 500; font-size: 0.9rem;"></span>
+                    <button id="btn-logout" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Cerrar Sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-main container" style="max-width: 1200px;">
+            <!-- Saludo Dinámico -->
+            <div style="margin-bottom: var(--spacing-xl);">
+                <h1 id="greeting" style="margin-bottom: var(--spacing-xs);">Bienvenido al Panel</h1>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Aquí tienes un resumen general del estado de la tienda.</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <!-- Muebles -->
+                <div class="kpi-card kpi-orange animate-in animate-in-delay-1">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <div class="kpi-info">
+                        <h4>Muebles</h4>
+                        <div class="kpi-value" id="count-muebles">--</div>
+                        <a href="muebles.html" class="kpi-sub">Administrar →</a>
+                    </div>
+                </div>
+
+                <!-- Clientes -->
+                <div class="kpi-card kpi-blue animate-in animate-in-delay-2">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="kpi-info">
+                        <h4>Clientes</h4>
+                        <div class="kpi-value" id="count-clientes">--</div>
+                        <a href="clientes.html" class="kpi-sub">Ver clientes →</a>
+                    </div>
+                </div>
+
+                <!-- Órdenes -->
+                <div class="kpi-card kpi-purple animate-in animate-in-delay-3">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                    <div class="kpi-info">
+                        <h4>Órdenes</h4>
+                        <div class="kpi-value" id="count-ordenes">--</div>
+                        <a href="pedidos.html" class="kpi-sub">Ver pedidos →</a>
+                    </div>
+                </div>
+
+                <!-- Ingresos -->
+                <div class="kpi-card kpi-green animate-in animate-in-delay-4">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <div class="kpi-info">
+                        <h4>Ingresos Totales</h4>
+                        <div class="kpi-value" id="count-ingresos">--</div>
+                        <a href="reportes.html" class="kpi-sub">Ver reportes →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Últimos Pedidos + Bajo Stock -->
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--spacing-xl); align-items: start;">
+
+                <!-- Últimos Pedidos -->
+                <div class="dashboard-section">
+                    <div class="dashboard-section-header">
+                        <h2>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Últimos Pedidos
+                        </h2>
+                        <a href="pedidos.html" style="font-size: 0.85rem;">Ver todos →</a>
+                    </div>
+                    <div class="admin-card" style="padding: 0; overflow: hidden;">
+                        <table class="admin-table" style="margin: 0; box-shadow: none;">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Nº Orden</th>
+                                    <th>Cliente</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-ultimos-pedidos">
+                                <tr><td colspan="5" style="text-align: center; padding: 20px;">Cargando...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Bajo Stock -->
+                <div class="dashboard-section">
+                    <div class="dashboard-section-header">
+                        <h2>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            Bajo Stock
+                        </h2>
+                    </div>
+                    <div class="admin-card" style="padding: 0; overflow: hidden;">
+                        <table class="admin-table" style="margin: 0; box-shadow: none;">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-bajo-stock">
+                                <tr><td colspan="2" style="text-align: center; padding: 20px;">Cargando...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module">
+        import { getSession, logout, supabase } from '../../js/supabaseClient.js';
+
+        // Utilidad: animación de conteo
+        function animateCount(el, target, prefix = '', suffix = '') {
+            const duration = 800;
+            const start = performance.now();
+            const numericTarget = typeof target === 'number' ? target : parseFloat(target) || 0;
+
+            function update(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out quad
+                const eased = 1 - (1 - progress) * (1 - progress);
+                const current = Math.floor(eased * numericTarget);
+                el.textContent = prefix + current.toLocaleString('es-CO') + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+                else el.textContent = prefix + numericTarget.toLocaleString('es-CO') + suffix;
+            }
+            requestAnimationFrame(update);
+        }
+
+        // Badge de estado
+        function getStatusBadge(estado) {
+            const map = {
+                'Pendiente': 'badge-warning',
+                'Procesando': 'badge-info',
+                'Enviado': 'badge-purple',
+                'Entregado': 'badge-success',
+                'Cancelado': 'badge-error'
+            };
+            return `<span class="badge ${map[estado] || 'badge-neutral'}">${estado || 'N/A'}</span>`;
+        }
+
+        // Saludo dinámico
+        function setGreeting() {
+            const hour = new Date().getHours();
+            let saludo = 'Buenas noches';
+            if (hour >= 5 && hour < 12) saludo = 'Buenos días';
+            else if (hour >= 12 && hour < 18) saludo = 'Buenas tardes';
+            document.getElementById('greeting').textContent = `${saludo} 👋`;
+        }
+
+        async function init() {
+            const session = await getSession();
+            if (!session || session.user.app_metadata?.role !== 'admin') {
+                alert("Acceso denegado. Se requieren permisos de administrador.");
+                window.location.href = '../../index.html';
+                return;
+            }
+
+            document.getElementById('user-email').textContent = session.user.email;
+            document.getElementById('btn-logout').addEventListener('click', logout);
+            setGreeting();
+
+            // Cargar KPIs en paralelo
+            const [muebles, clientes, ordenes] = await Promise.all([
+                supabase.from('productos').select('*', { count: 'exact', head: true }),
+                supabase.from('clientes').select('*', { count: 'exact', head: true }),
+                supabase.from('compras').select('valor_total')
+            ]);
+
+            animateCount(document.getElementById('count-muebles'), muebles.count || 0);
+            animateCount(document.getElementById('count-clientes'), clientes.count || 0);
+            animateCount(document.getElementById('count-ordenes'), ordenes.data?.length || 0);
+
+            const totalIngresos = (ordenes.data || []).reduce((sum, c) => sum + (parseFloat(c.valor_total) || 0), 0);
+            animateCount(document.getElementById('count-ingresos'), totalIngresos, '$');
+
+            // Últimos 5 pedidos
+            const { data: ultimos } = await supabase
+                .from('compras')
+                .select('*, clientes ( nombres )')
+                .order('fecha_compra', { ascending: false })
+                .limit(5);
+
+            const tbodyPedidos = document.getElementById('tabla-ultimos-pedidos');
+            if (ultimos && ultimos.length > 0) {
+                tbodyPedidos.innerHTML = ultimos.map(c => `
+                    <tr>
+                        <td>${new Date(c.fecha_compra).toLocaleDateString('es-CO', { day: 'numeric', month: 'short' })}</td>
+                        <td style="font-weight: 500;">${c.num_orden}</td>
+                        <td>${c.clientes?.nombres || 'N/A'}</td>
+                        <td style="font-weight: 600;">$${parseFloat(c.valor_total).toLocaleString('es-CO')}</td>
+                        <td>${getStatusBadge(c.estado)}</td>
+                    </tr>
+                `).join('');
+            } else {
+                tbodyPedidos.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px; color: var(--text-secondary);">No hay pedidos registrados.</td></tr>';
+            }
+
+            // Bajo stock (<=5)
+            const { data: bajoStock } = await supabase
+                .from('productos')
+                .select('nombre, stock')
+                .lte('stock', 5)
+                .order('stock', { ascending: true })
+                .limit(8);
+
+            const tbodyStock = document.getElementById('tabla-bajo-stock');
+            if (bajoStock && bajoStock.length > 0) {
+                tbodyStock.innerHTML = bajoStock.map(p => `
+                    <tr>
+                        <td style="font-weight: 500;">${p.nombre}</td>
+                        <td>
+                            <span class="badge ${p.stock === 0 ? 'badge-error' : 'badge-warning'}">
+                                ${p.stock === 0 ? '⚠ Agotado' : p.stock + ' uds'}
+                            </span>
+                        </td>
+                    </tr>
+                `).join('');
+            } else {
+                tbodyStock.innerHTML = '<tr><td colspan="2" style="text-align:center; padding: 20px; color: var(--color-success);">✓ Todo el inventario tiene stock suficiente.</td></tr>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

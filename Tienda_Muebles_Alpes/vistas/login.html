@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Muebles los Alpes</title>
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: var(--bg-main);">
+    
+    <div class="card" style="width: 100%; max-width: 400px; padding: var(--spacing-xl);">
+        <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: var(--spacing-xs);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <h1 class="logo" style="margin-bottom: 0;">Muebles los Alpes</h1>
+            </div>
+            <p style="color: var(--text-secondary);">Ingresa a tu cuenta</p>
+        </div>
+
+        <form id="form-login">
+            <div id="error-message" style="color: var(--color-error); font-size: var(--font-size-small); margin-bottom: var(--spacing-sm); display: none;"></div>
+            
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-md);" id="btn-submit">
+                Iniciar Sesión
+            </button>
+        </form>
+
+        <div style="text-align: center; margin-top: var(--spacing-lg); font-size: var(--font-size-small);">
+            ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a><br>
+            <a href="../index.html" style="color: var(--text-secondary); display: inline-block; margin-top: var(--spacing-sm);">← Volver al inicio</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { loginUser } from '../js/auth.js';
+
+        document.getElementById('form-login').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('btn-submit');
+            const errorMsg = document.getElementById('error-message');
+            
+            btn.disabled = true;
+            btn.textContent = 'Cargando...';
+            errorMsg.style.display = 'none';
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const { data, error } = await loginUser(email, password);
+
+            if (error) {
+                errorMsg.textContent = error.message;
+                errorMsg.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Iniciar Sesión';
+            } else {
+                // Verificar si es admin o cliente
+                const user = data.user;
+                const isAdmin = user.app_metadata?.role === 'admin';
+                if(isAdmin){
+                    window.location.href = './admin/dashboard.html';
+                } else {
+                    window.location.href = '../index.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-list">
+
+    <div class="page-container">
+        <div class="page-header">
+            <div class="page-eyebrow">Aprendiz · Maria Fernanda Gonzalez Diaz · 3230935</div>
+            <h1 class="page-title">100 USUARIOS</h1>
+        </div>
+
+        <a class="back-link" href="index.html">← Volver al listado</a>
+
+        <div class="grid-usuarios" id="grid"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('grid');
+            const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+            if(favoritos.length === 0){
+                grid.innerHTML = '<p class="empty-state">Aún no has marcado usuarios como favoritos.</p>';
+                return;
+            }
+
+            favoritos.forEach(user => grid.appendChild(crearCard(user)));
+        });
+
+        function crearCard(user){
+            const uuid = user.login.uuid;
+
+            const card = document.createElement('div');
+            card.className = 'user-card';
+
+            const starBtn = document.createElement('button');
+            starBtn.type = 'button';
+            starBtn.className = 'star-btn active';
+            starBtn.textContent = '★';
+            starBtn.setAttribute('aria-label', 'Quitar de favoritos');
+            starBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                quitarFavorito(uuid, card);
+            });
+
+            const img = document.createElement('img');
+            img.className = 'user-avatar';
+            img.src = user.picture.large;
+            img.alt = `Foto de ${user.name.first} ${user.name.last}`;
+
+            const nombre = document.createElement('h3');
+            nombre.className = 'user-name';
+            nombre.textContent = `${user.name.first} ${user.name.last}`;
+
+            const meta = document.createElement('p');
+            meta.className = 'user-meta';
+            const genero = user.gender === 'male' ? 'Hombre' : 'Mujer';
+            meta.textContent = `${genero} · ${user.dob.age} años`;
+
+            card.append(starBtn, img, nombre, meta);
+
+            card.addEventListener('click', () => {
+                localStorage.setItem('usuarioSeleccionado', JSON.stringify(user));
+                window.location.href = 'perfil.html';
+            });
+
+            return card;
+        }
+
+        function quitarFavorito(uuid, cardEl){
+            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+            favoritos = favoritos.filter(f => f.login.uuid !== uuid);
+
+            if(favoritos.length){
+                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            } else {
+                localStorage.removeItem('favoritos');
+            }
+
+            cardEl.remove();
+
+            const grid = document.getElementById('grid');
+            if(!grid.children.length){
+                grid.innerHTML = '<p class="empty-state">Aún no has marcado usuarios como favoritos.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

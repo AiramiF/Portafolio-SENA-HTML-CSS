@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.18.1/axios.js"></script>
+    <title>Lista de usuarios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-list">
+
+    <div class="page-container">
+        <div class="page-header">
+            <div class="page-eyebrow">Aprendiz · Maria Fernanda Gonzalez Diaz · 3230935</div>
+            <h1 class="page-title">100 USUARIOS</h1>
+        </div>
+
+        <a class="back-link" href="favoritos.html">Favoritos ⭐</a>
+
+        <div class="grid-usuarios" id="grid">
+            <p class="empty-state">Cargando usuarios…</p>
+        </div>
+    </div>
+
+    <script>
+        let usuarios = [];
+        let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+        async function cargarUsuarios(){
+            const contenedor = document.getElementById('grid');
+            try{
+                const res = await axios.get('https://randomuser.me/api/?results=100');
+                usuarios = res.data.results;
+                contenedor.innerHTML = '';
+                usuarios.forEach(user => contenedor.appendChild(crearCard(user)));
+            }catch(error){
+                console.error(error);
+                contenedor.innerHTML = '<p class="empty-state">No se pudieron cargar los usuarios.</p>';
+            }
+        }
+
+        function esFavorito(uuid){
+            return favoritos.some(f => f.login.uuid === uuid);
+        }
+
+        function crearCard(user){
+            const uuid = user.login.uuid;
+
+            const card = document.createElement('div');
+            card.className = 'user-card';
+            card.dataset.id = uuid;
+
+            const starBtn = document.createElement('button');
+            starBtn.type = 'button';
+            starBtn.className = 'star-btn' + (esFavorito(uuid) ? ' active' : '');
+            starBtn.textContent = esFavorito(uuid) ? '★' : '☆';
+            starBtn.setAttribute('aria-label', 'Agregar a favoritos');
+            starBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFavorito(user, starBtn);
+            });
+
+            const img = document.createElement('img');
+            img.className = 'user-avatar';
+            img.src = user.picture.large;
+            img.alt = `Foto de ${user.name.first} ${user.name.last}`;
+
+            const nombre = document.createElement('h3');
+            nombre.className = 'user-name';
+            nombre.textContent = `${user.name.first} ${user.name.last}`;
+
+            const meta = document.createElement('p');
+            meta.className = 'user-meta';
+            const genero = user.gender === 'male' ? 'Hombre' : 'Mujer';
+            meta.textContent = `${genero} · ${user.dob.age} años`;
+
+            card.append(starBtn, img, nombre, meta);
+
+            // Click en la card (no en la estrella) -> ir al perfil
+            card.addEventListener('click', () => {
+                localStorage.setItem('usuarioSeleccionado', JSON.stringify(user));
+                window.location.href = 'perfil.html';
+            });
+
+            return card;
+        }
+
+        function toggleFavorito(user, btn){
+            const uuid = user.login.uuid;
+
+            if(esFavorito(uuid)){
+                favoritos = favoritos.filter(f => f.login.uuid !== uuid);
+                btn.classList.remove('active');
+                btn.textContent = '☆';
+            } else {
+                favoritos.push(user);
+                btn.classList.add('active');
+                btn.textContent = '★';
+            }
+
+            if(favoritos.length){
+                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            } else {
+                localStorage.removeItem('favoritos');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', cargarUsuarios);
+    </script>
+</body>
+</html>

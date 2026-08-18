@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes - Admin</title>
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Header Admin -->
+        <header class="admin-header">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: var(--spacing-lg);">
+                    <div class="logo" style="color: var(--color-accent); font-family: var(--font-family-base); font-size: 1.2rem;">Panel Admin</div>
+                    <nav class="admin-nav">
+                        <a href="dashboard.html">Resumen</a>
+                        <a href="muebles.html">Muebles</a>
+                        <a href="clientes.html" class="active">Clientes</a>
+                        <a href="pedidos.html">Pedidos</a>
+                        <a href="reportes.html">Reportes</a>
+                    </nav>
+                </div>
+                <div class="header-actions">
+                    <a href="../../index.html" style="font-size: 0.9rem; margin-right: 15px; color: var(--text-secondary);">← Tienda</a>
+                    <span id="user-email" style="margin-right: 15px; font-weight: 500; font-size: 0.9rem;"></span>
+                    <button id="btn-logout" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Cerrar Sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-main container" style="max-width: 1200px;">
+            <div class="admin-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md); flex-wrap: wrap; gap: var(--spacing-sm);">
+                    <h2 style="margin: 0;">Clientes Registrados</h2>
+                    <input type="text" id="search-cliente" class="form-control" placeholder="Buscar por nombre o documento..." style="width: 300px;">
+                </div>
+                
+                <div style="overflow-x: auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Documento</th>
+                                <th>Nombre Completo</th>
+                                <th>Tipo</th>
+                                <th>Ciudad</th>
+                                <th>Teléfono</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-clientes">
+                            <tr><td colspan="7">Cargando...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Edición -->
+    <div class="modal-overlay" id="modal-editar">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar Cliente</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-editar-cliente">
+                    <input type="hidden" id="edit-id">
+                    
+                    <div class="form-group">
+                        <label>Documento</label>
+                        <input type="text" id="edit-documento" class="form-control" readonly style="background-color: #f3f4f6; color: #6b7280;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" id="edit-nombre" class="form-control" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                        <div class="form-group">
+                            <label>Teléfono Fijo</label>
+                            <input type="text" id="edit-telefono" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono Móvil</label>
+                            <input type="text" id="edit-movil" class="form-control">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                        <div class="form-group">
+                            <label>Ciudad</label>
+                            <input type="text" id="edit-ciudad" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Departamento</label>
+                            <input type="text" id="edit-departamento" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        <input type="text" id="edit-direccion" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Profesión</label>
+                        <input type="text" id="edit-profesion" class="form-control">
+                    </div>
+
+                    <!-- Toggle Admin Role -->
+                    <div style="padding: var(--spacing-md); background: #F9FAFB; border-radius: var(--border-radius-md); border: 1px solid #E5E7EB; margin-top: var(--spacing-md);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong style="font-size: 0.95rem;">Rol de Administrador</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Otorga o revoca acceso completo al panel de administración.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="edit-admin-toggle">
+                                <div class="toggle-slider"></div>
+                            </label>
+                        </div>
+                        <div id="edit-role-badge" style="margin-top: var(--spacing-sm);"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="btn-modal-cancel" style="flex: none; padding: 8px 20px;">Cancelar</button>
+                <button class="btn btn-primary" id="btn-modal-save" style="flex: none; padding: 8px 20px;">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script type="module" src="../../js/admin/clientes.js"></script>
+</body>
+</html>

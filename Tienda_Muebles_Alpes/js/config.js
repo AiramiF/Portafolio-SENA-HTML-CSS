@@ -1,0 +1,2 @@
+export const SUPABASE_URL = 'https://udvprorvcoutuiviryhj.supabase.co';
+export const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkdnByb3J2Y291dHVpdmlyeWhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNTIxMDUsImV4cCI6MjEwMDgyODEwNX0.6CzdC259ls_6pvOgjwWXOB0UXZAXsBavapGmS8egog0';

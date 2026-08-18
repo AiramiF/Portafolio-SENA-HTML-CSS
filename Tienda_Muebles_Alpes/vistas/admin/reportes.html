@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - Admin</title>
+    <!-- Google Fonts: Roboto & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Header Admin -->
+        <header class="admin-header">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: var(--spacing-lg);">
+                    <div class="logo" style="color: var(--color-accent); font-family: var(--font-family-base); font-size: 1.2rem;">Panel Admin</div>
+                    <nav class="admin-nav">
+                        <a href="dashboard.html">Resumen</a>
+                        <a href="muebles.html">Muebles</a>
+                        <a href="clientes.html">Clientes</a>
+                        <a href="pedidos.html">Pedidos</a>
+                        <a href="reportes.html" class="active">Reportes</a>
+                    </nav>
+                </div>
+                <div class="header-actions">
+                    <a href="../../index.html" style="font-size: 0.9rem; margin-right: 15px; color: var(--text-secondary);">← Tienda</a>
+                    <span id="user-email" style="margin-right: 15px; font-weight: 500; font-size: 0.9rem;"></span>
+                    <button id="btn-logout" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Cerrar Sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="app-main container" style="max-width: 1200px;">
+            <h1 style="margin-bottom: var(--spacing-xs);">Módulo de Reportes</h1>
+            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Análisis de ventas, productos y clientes de la tienda.</p>
+
+            <!-- KPIs del Mes -->
+            <div class="kpi-grid" style="margin-bottom: var(--spacing-2xl);">
+                <div class="kpi-card kpi-green animate-in animate-in-delay-1">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <div class="kpi-info">
+                        <h4>Ventas del Mes</h4>
+                        <div class="kpi-value" id="kpi-ventas-mes">$--</div>
+                        <span class="kpi-sub" id="kpi-ventas-mes-label">Mes actual</span>
+                    </div>
+                </div>
+                <div class="kpi-card kpi-blue animate-in animate-in-delay-2">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                    <div class="kpi-info">
+                        <h4>Órdenes del Mes</h4>
+                        <div class="kpi-value" id="kpi-ordenes-mes">--</div>
+                        <span class="kpi-sub">Pedidos completados</span>
+                    </div>
+                </div>
+                <div class="kpi-card kpi-orange animate-in animate-in-delay-3">
+                    <div class="kpi-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="kpi-info">
+                        <h4>Ticket Promedio</h4>
+                        <div class="kpi-value" id="kpi-ticket">$--</div>
+                        <span class="kpi-sub">Valor promedio por orden</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RF-15: Ventas por Periodo -->
+            <div class="admin-card" style="margin-bottom: var(--spacing-xl);">
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <h2 style="margin: 0;">Ventas por Periodo y Ciudad</h2>
+                </div>
+                <div class="filter-bar">
+                    <div class="form-group">
+                        <label>Fecha Inicio</label>
+                        <input type="date" id="r1-inicio" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha Fin</label>
+                        <input type="date" id="r1-fin" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Ciudad</label>
+                        <input type="text" id="r1-ciudad" class="form-control" placeholder="Ej. Bogotá">
+                    </div>
+                    <button class="btn btn-primary" id="btn-generar-r1" style="flex: none; padding: 10px 20px;">Generar Reporte</button>
+                </div>
+                
+                <div id="r1-results" style="overflow-x: auto;">
+                    <p style="color: var(--text-secondary);">Selecciona filtros y haz clic en generar.</p>
+                </div>
+            </div>
+
+            <!-- RF-16: Producto más vendido -->
+            <div class="admin-card" style="margin-bottom: var(--spacing-xl);">
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    <h2 style="margin: 0;">Producto Más Vendido</h2>
+                </div>
+                <div class="filter-bar">
+                    <button class="btn btn-secondary" id="btn-generar-r2" style="flex: none; padding: 10px 20px;">Calcular Histórico Global</button>
+                </div>
+                <div id="r2-results">
+                    <p style="color: var(--text-secondary);">Haz clic para calcular.</p>
+                </div>
+            </div>
+
+            <!-- RF-17: Compras por Cliente -->
+            <div class="admin-card">
+                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <h2 style="margin: 0;">Historial de Compras por Cliente</h2>
+                </div>
+                <div class="filter-bar">
+                    <div class="form-group">
+                        <label>Documento del Cliente</label>
+                        <input type="text" id="r3-doc" class="form-control" placeholder="Ej. 101010">
+                    </div>
+                    <button class="btn btn-primary" id="btn-generar-r3" style="flex: none; padding: 10px 20px;">Buscar Compras</button>
+                </div>
+                <div id="r3-results" style="overflow-x: auto;">
+                    <p style="color: var(--text-secondary);">Ingresa un documento para buscar.</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script type="module" src="../../js/admin/reportes.js"></script>
+</body>
+</html>
